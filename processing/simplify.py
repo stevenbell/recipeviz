@@ -2,15 +2,16 @@
 # Steven Bell <sebell@stanford.edu>
 # 19 November 2016
 
-import mysql.connector
+from csv import DictReader
 import re # Regular expressions
 from enum import Enum
 from IPython import embed
+from ingredientmap import ingredient_remap,adjectives
 
 def parse_amount(ing):
   # Assume that the amount is at the beginning of the line
 
-  # Whole number plus a fraction, e.g., 1 1/2
+  # Whole number plus a fraction, e.g., 1 1/2 cups flour
   s = re.match('\d+ \d+/\d+', ing)
   if s is not None:
     (whole, fraction, rem) = ing.strip().split(' ', 2)
@@ -18,7 +19,7 @@ def parse_amount(ing):
     amount = float(whole) + float(coeff[0]) / float(coeff[1])
     return (amount, rem)
 
-  # Regular fraction
+  # Regular fraction, e.g., 3/4 cup sugar
   s = re.match('\d+/\d+', ing)
   if s is not None:
     fraction = ing[0:s.end()]
@@ -26,7 +27,11 @@ def parse_amount(ing):
     amount = float(coeff[0]) / float(coeff[1])
     return (amount, ing[s.end():])
 
-  # Counted object
+  # TODO: Number with a size, e.g., "1 (8 ounce) package cream cheese"
+  # Pull out the numbers, remove the closing paren, and let the unit parser
+  # do its part.
+
+  # Counted object, e.g., 2 eggs
   s = re.match('\d+', ing)
   if s is not None:
     amount = float(ing[0:s.end()])
@@ -37,7 +42,6 @@ def parse_amount(ing):
 
 
 def parse_unit(ing):
-  # TODO: need to specify whether we're returning volume units or mass units
   # An ingredient line *should* consist of [number/fraction, unit, ingredient],
   # or just of [number, ingredient].  In some cases, there might be
   # [unit, ingredient], as in "dash of salt"
@@ -45,7 +49,8 @@ def parse_unit(ing):
   # Convert volume units to ml
   volumeunits = {'cup':236.6, 'cups':236.6, 'c':236.6,
                  'teaspoon':4.929, 'teaspoons':4.929, 't':4.929,
-                 'tablespoon':14.79, 'tablespoons':14.79, 'T':14.79 }
+                 'tablespoon':14.79, 'tablespoons':14.79, 'T':14.79,
+                 'pinch':0.308 }
 
   # Convert mass units to grams
   massunits = {'ounce':28.34, 'ounces':28.34, 'oz':28.34,
@@ -65,24 +70,43 @@ def parse_unit(ing):
   # print "Not cool, imperialists!"
 
 
-config = {
-  'user': 'recipes',
-  'password': 'cookies',
-  'host': 'localhost',
-  'database': 'recipedb',
-  'raise_on_warnings': True,
-}
+ing_reader = DictReader(open('knowningredients.csv'))
+ingredient_details = [row for row in ing_reader]
+known_ingredients = [i['ingredient'] for i in ingredient_details]
 
-# Open the database
-database = mysql.connector.connect(**config)
-cursor = database.cursor()
+def parse_ingredient(ing):
+  # If there's a comma, strip off the adjectives to the right
+  ing = ing.split(',')[0]
+  # Convert to lowercase
+  ing = ing.lower()
 
-# Get ingredients
-cursor.execute("SELECT ingredients FROM cooking_recipes_reformat LIMIT 10")
+  # Remove other adjectives, e.g., chopped, diced, etc.
+  words = ing.split()
+  ing = ' '.join([w for w in words if w not in adjectives])
 
-for result in cursor:
+  # TODO: deal with plurals properly (maybe using NLTK?)
+  if ing.endswith('es'):
+    ing = ing[:-2]
+  elif ing.endswith('s'):
+    ing = ing[:-1]
 
-  ingredients = eval(result[0])
+  # Map this to a known ingredient
+  while ing in ingredient_remap:
+    #print "applying %s -> %s" % (ing, ingredient_remap[ing])
+    ing = ingredient_remap[ing]
+
+  # Find the known ingredient that matches this
+  if ing in known_ingredients:
+    return ing
+
+  return None
+
+dr = DictReader(open('ingredients_testing.csv'))
+
+for row in dr:
+
+  print row['name']
+  ingredients = eval(row['ingredients'])
   for ing in ingredients:
   
     (amount, remainder) = parse_amount(ing)
@@ -93,12 +117,18 @@ for result in cursor:
     (unit, utype, remainder) = parse_unit(remainder)
     if unit is None:
       print "[%0.1f] %s" % (amount, remainder)
+      # TODO: don't just continue
+      continue
+
+    ingredient = parse_ingredient(remainder)
+    if ingredient is None:
+      print "Can't identify %s" % remainder
       continue
 
     if utype is 'volume':
-      print "[%0.2f ml] %s" % (amount*unit, remainder)
+      print "[%0.2f ml] %s" % (amount*unit, ingredient)
     else:
-      print "[%0.2f g] %s" % (amount*unit, remainder)
+      print "[%0.2f g] %s" % (amount*unit, ingredient)
   
   print "--------"
     #embed()

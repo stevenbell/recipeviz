@@ -19,11 +19,14 @@ import codecs # Write unicode files
 outfile = codecs.open('ingredients.csv', encoding='utf-8', mode='w+')
 outfile.write('id,name,category,ingredients\n')
 
-for number in range(9500, 12500):
+for number in range(12500, 15500):
   url = "http://allrecipes.com/recipe/%d" % number
 
   try:
     page = requests.get(url)
+    if page.status_code == 404:
+      print "404: %s" % url
+      continue
 
     document = html.fromstring(page.content)
   
