@@ -9,7 +9,7 @@ import codecs # For writing unicode in log files
 from IPython import embed
 from ingredientmap import ingredient_remap,adjectives
 
-inpath = 'ingredients.json'
+inpath = 'ingredients_6663-10000.json'
 outpath = 'ingredients_simplified.json'
 errpath = 'ingredients_missing.txt'
 
@@ -149,13 +149,13 @@ for line in infile:
 
     if unit is None:
       print "[%0.1f] %s" % (amount, ingredient)
-      ingredients_simple.append("%0.1f %s" % (amount, ingredient))
+      ingredients_simple.append({'amount':amount, 'type':'counted', 'item':ingredient})
     elif utype is 'volume':
       print "[%0.2f ml] %s" % (amount*unit, ingredient)
-      ingredients_simple.append("%0.2f ml %s" % (amount*unit, ingredient))
+      ingredients_simple.append({'amount':amount*unit, 'type':'volume', 'item':ingredient})
     else:
       print "[%0.2f g] %s" % (amount*unit, ingredient)
-      ingredients_simple.append("%0.2f g %s" % (amount*unit, ingredient))
+      ingredients_simple.append({'amount':amount*unit, 'type':'mass', 'item':ingredient})
   
   row_simple = {'name':row['name'], 'category':row['category'], 'ingredients':ingredients_simple}
   json.dump(row_simple, outfile)
