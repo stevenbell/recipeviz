@@ -6,7 +6,7 @@ from IPython import embed
 from lxml import html
 import requests
 import time
-import codecs # Write unicode files
+import json
 
 # Individual recipes are at
 # http://allrecipes.com/recipe/[NUMBER]/[...]
@@ -16,10 +16,9 @@ import codecs # Write unicode files
 # based on the category.
 
 # Don't overwrite, just append, which we can fix manually later
-outfile = codecs.open('ingredients.csv', encoding='utf-8', mode='w+')
-outfile.write('id,name,category,ingredients\n')
+outfile = open('ingredients.json', 'w+')
 
-for number in range(12500, 15500):
+for number in range(11100, 20000):
   url = "http://allrecipes.com/recipe/%d" % number
 
   try:
@@ -29,17 +28,21 @@ for number in range(12500, 15500):
       continue
 
     document = html.fromstring(page.content)
+    recipe = {'number':number}
   
-    name = document.xpath('//h1[@class="recipe-summary__h1"]/text()')[0]
+    recipe['name'] = document.xpath('//h1[@class="recipe-summary__h1"]/text()')[0]
 
     categorybits = document.xpath('//ul[@class="breadcrumbs breadcrumbs"]/li/a/span[@itemprop="title"]/text()')
-    category = '>'.join([c.strip() for c in categorybits])
+    recipe['category'] = '>'.join([c.strip() for c in categorybits])
 
     inglines = document.xpath('//span[@class="recipe-ingred_txt added"]')
-    ingredients = [i.xpath('text()')[0] for i in inglines]
-  
-    outfile.write('%d,"%s","%s","%s"\n' % (number, name, category, str(ingredients)))
-    print name
+    # It would be better to escape rather than remove the quotes
+    # But removing them sure simplifies things.
+    recipe['ingredients'] = [i.xpath('text()')[0].replace("'", "") for i in inglines]
+
+    json.dump(recipe, outfile)
+    outfile.write('\n')
+    print recipe['name']
   
   except Exception as e:
     print e

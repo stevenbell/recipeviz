@@ -4,9 +4,14 @@
 
 from csv import DictReader
 import re # Regular expressions
-from enum import Enum
+import json
+import codecs # For writing unicode in log files
 from IPython import embed
 from ingredientmap import ingredient_remap,adjectives
+
+inpath = 'ingredients.json'
+outpath = 'ingredients_simplified.json'
+errpath = 'ingredients_missing.txt'
 
 def parse_amount(ing):
   # Assume that the amount is at the beginning of the line
@@ -46,8 +51,9 @@ def parse_unit(ing):
   # or just of [number, ingredient].  In some cases, there might be
   # [unit, ingredient], as in "dash of salt"
 
-  # Convert volume units to ml
-  volumeunits = {'cup':236.6, 'cups':236.6, 'c':236.6,
+  # Convert volume units to mlv
+  volumeunits = {'gallon':3785.4, 'quart':946.3,
+                 'cup':236.6, 'cups':236.6, 'c':236.6,
                  'teaspoon':4.929, 'teaspoons':4.929, 't':4.929,
                  'tablespoon':14.79, 'tablespoons':14.79, 'T':14.79,
                  'pinch':0.308 }
@@ -58,11 +64,20 @@ def parse_unit(ing):
                'gram':1.0, 'grams':1.0,
                'kilogram':1000.0, 'kilograms':1000.0}
 
+  counters = ['cubes', 'stalks']
+
+  # If there's only one word, it had better be the ingredient
+  if not ' ' in ing.strip():
+    return (None, None, ing)
+
+  # Split the first word and see if it's a unit
   (unit, rem) = ing.strip().split(' ', 1)
   if unit in volumeunits:
     return (volumeunits[unit], 'volume', rem)
   elif unit in massunits:
     return (massunits[unit], 'mass', rem)
+  elif unit in counters:
+    return (None, None, rem) # Just drop the counter word
   else:
     return (None, None, ing) 
 
@@ -76,6 +91,7 @@ known_ingredients = [i['ingredient'] for i in ingredient_details]
 
 def parse_ingredient(ing):
   # If there's a comma, strip off the adjectives to the right
+  # This is a little dangerous; e.g., "peeled, cored and sliced apples"
   ing = ing.split(',')[0]
   # Convert to lowercase
   ing = ing.lower()
@@ -99,15 +115,25 @@ def parse_ingredient(ing):
   if ing in known_ingredients:
     return ing
 
+  # Not an exact match, try searching for a partial match
+  else:
+    for k in known_ingredients:
+      if k in ing:
+        pass
+        #print u"Possible match for \"", ing, u"\": ", k
+
   return None
 
-dr = DictReader(open('ingredients_testing.csv'))
+infile = open(inpath)
+outfile = open(outpath, 'w')
+errfile = codecs.open(errpath, encoding='utf-8', mode='w')
 
-for row in dr:
+for line in infile:
+  row = json.loads(line)
 
   print row['name']
-  ingredients = eval(row['ingredients'])
-  for ing in ingredients:
+  ingredients_simple = []
+  for ing in row['ingredients']:
   
     (amount, remainder) = parse_amount(ing)
     if amount is None:
@@ -115,23 +141,27 @@ for row in dr:
       continue
     
     (unit, utype, remainder) = parse_unit(remainder)
-    if unit is None:
-      print "[%0.1f] %s" % (amount, remainder)
-      # TODO: don't just continue
-      continue
 
     ingredient = parse_ingredient(remainder)
     if ingredient is None:
-      print "Can't identify %s" % remainder
+      errfile.write("Can't identify %s\n" % remainder)
       continue
 
-    if utype is 'volume':
+    if unit is None:
+      print "[%0.1f] %s" % (amount, ingredient)
+      ingredients_simple.append("%0.1f %s" % (amount, ingredient))
+    elif utype is 'volume':
       print "[%0.2f ml] %s" % (amount*unit, ingredient)
+      ingredients_simple.append("%0.2f ml %s" % (amount*unit, ingredient))
     else:
       print "[%0.2f g] %s" % (amount*unit, ingredient)
+      ingredients_simple.append("%0.2f g %s" % (amount*unit, ingredient))
   
+  row_simple = {'name':row['name'], 'category':row['category'], 'ingredients':ingredients_simple}
+  json.dump(row_simple, outfile)
+  outfile.write('\n')
+
   print "--------"
-    #embed()
     # TODO: logic to convert ingredients to mass (grams)
     # It would be nice to keep the info about volume, because the user will think
     # about liquids in volumes.
@@ -140,5 +170,7 @@ for row in dr:
   
     # Assume ingredients are already lowercase; if not: ing = ing.lower();
   
-  # TODO: handle plurals of things which are counted, e.g., eggs
+
+outfile.close()
+errfile.close()
 
