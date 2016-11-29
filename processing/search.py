@@ -5,7 +5,7 @@
 import json
 import csv
 import codecs # For writing unicode
-from IPython import embed
+#from IPython import embed
 
 inpath = 'ingredients_simplified.json'
 outpath = 'ingredients_matrix.csv'

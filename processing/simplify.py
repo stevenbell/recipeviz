@@ -6,7 +6,7 @@ from csv import DictReader
 import re # Regular expressions
 import json
 import codecs # For writing unicode in log files
-from IPython import embed
+#from IPython import embed
 from ingredientmap import ingredient_remap,adjectives
 
 inpath = 'ingredients_6663-10000.json'
