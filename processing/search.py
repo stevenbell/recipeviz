@@ -8,7 +8,7 @@ import codecs # For writing unicode
 #from IPython import embed
 
 inpath = 'ingredients_simplified.json'
-outpath = 'ingredients_matrix.csv'
+outpath = 'ingredients_matrix.json'
 infile = open(inpath)
 
 # Spin through the database and select the matching ones

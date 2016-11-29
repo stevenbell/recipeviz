@@ -9,7 +9,7 @@ import codecs # For writing unicode in log files
 #from IPython import embed
 from ingredientmap import ingredient_remap,adjectives
 
-inpath = 'ingredients_6663-10000.json'
+inpath = 'cookie_ingredients.json'
 outpath = 'ingredients_simplified.json'
 errpath = 'ingredients_missing.txt'
 
@@ -131,7 +131,7 @@ errfile = codecs.open(errpath, encoding='utf-8', mode='w')
 for line in infile:
   row = json.loads(line)
 
-  print row['name']
+  print row['name'].encode('ascii', 'ignore')
   ingredients_simple = []
   for ing in row['ingredients']:
   
