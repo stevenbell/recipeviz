@@ -1,6 +1,5 @@
 Can't identify  (3.9 ounce) package instant chocolate pudding mix
 Can't identify  (16 ounce) container frozen whipped topping, thawed
-Can't identify semisweet chocolate chips
 Can't identify  (1 ounce) squares German sweet chocolate
 Can't identify  (7 ounce) jar marshmallow creme
 Can't identify  (12 fluid ounce) can evaporated milk
@@ -9,42 +8,26 @@ Can't identify red wine vinegar
 Can't identify  cloves garlic, minced
 Can't identify crushed red pepper flakes
 Can't identify fresh mushrooms, stems removed
-Can't identify light corn syrup
-Can't identify peppermint extract
 Can't identify  drop red food coloring (optional)
 Can't identify  large baking potatoes
 Can't identify  (16 ounce) container sour cream
 Can't identify shredded Cheddar cheese
 Can't identify  slices American cheese
-Can't identify crunchy peanut butter
-Can't identify milk chocolate chips
-Can't identify semisweet chocolate, melted
-Can't identify crunchy peanut butter
 Can't identify  (10.5 ounce) package large marshmallows
-Can't identify cornflakes cereal
-Can't identify green food coloring
 Can't identify cinnamon red hot candies
 Can't identify  (14 ounce) can artichoke hearts, drained and chopped
 Can't identify grated Parmesan cheese
 Can't identify  (4 ounce) can diced green chiles
 Can't identify  (7.25 ounce) package white frosting mix
-Can't identify light corn syrup
 Can't identify chopped nuts
 Can't identify  (8 ounce) package cream cheese
 Can't identify  apples - peeled, cored, and thinly sliced
 Can't identify  baking apples - peeled and cored
 Can't identify cinnamon red hot candies
 Can't identify  (29 ounce) can sweet potatoes, drained
-Can't identify  large marshmallows
-Can't identify  buttery round crackers
 Can't identify  recipe pastry for a 9 inch single crust pie
-Can't identify crushed buttery round crackers
-Can't identify  large marshmallows
-Can't identify green food coloring
-Can't identify cornflakes cereal
 Can't identify cinnamon red hot candies
 Can't identify  (18.25 ounce) package German chocolate cake mix with pudding
-Can't identify melted butter
 Can't identify individually wrapped caramels, unwrapped
 Can't identify shredded Cheddar cheese
 Can't identify shredded Monterey Jack cheese
@@ -52,23 +35,14 @@ Can't identify onion salt
 Can't identify lemon pepper
 Can't identify  (14 ounce) can artichoke hearts, drained
 Can't identify cranberries
-Can't identify cocoa
 Can't identify  (8 ounce) package cream cheese
 Can't identify  (14 ounce) package individually wrapped caramels
 Can't identify  (12 fluid ounce) can evaporated milk
 Can't identify  (18.25 ounce) package chocolate cake mix
-Can't identify semisweet chocolate chips
-Can't identify whole pecans
 Can't identify  (5 ounce) cans evaporated milk
-Can't identify semisweet chocolate chips
-Can't identify white chocolate chips
 Can't identify chocolate candy bar, broken into pieces
-Can't identify marshmallow creme
 Can't identify  (14 ounce) can sweetened condensed milk
-Can't identify heavy cream
 Can't identify raspberry flavored liqueur
-Can't identify self-rising flour
-Can't identify melted butter
 Can't identify prepared mincemeat pie filling
 Can't identify whole cranberry sauce
 Can't identify  (8 ounce) container sour cream
@@ -77,726 +51,246 @@ Can't identify  large sweet potatoes, peeled and quartered
 Can't identify  (15 ounce) can creamed corn
 Can't identify shredded mild Cheddar cheese
 Can't identify  (10 ounce) package frozen chopped broccoli
-Can't identify  milk chocolate candy kisses, unwrapped
 Can't identify  (16 ounce) jar dry roasted peanuts
 Can't identify  (14 ounce) packages red and green candy-coated chocolate
 Can't identify  (14 ounce) package chocolate covered peanuts
 Can't identify  (7 ounce) jar wheat nuts
 Can't identify  (2.25 ounce) jar red decorator sugar
 Can't identify  (10 ounce) jar maraschino cherries, drained
-Can't identify light corn syrup
-Can't identify crispy rice cereal
-Can't identify cashews
 Can't identify  large head cabbage, shredded
 Can't identify white wine vinegar
 Can't identify  (1 ounce) squares unsweetened chocolate
 Can't identify (1 ounce) squares unsweetened chocolate, melted
 Can't identify confectioners sugar for decoration
-Can't identify almond extract
 Can't identify  drops red food coloring
 Can't identify  (1 ounce) square unsweetened chocolate, melted
-Can't identify granola
 Can't identify chopped, unsalted dry-roasted peanuts
-Can't identify  egg white (optional)
-Can't identify quick cooking oats
 Can't identify toasted wheat germ
-Can't identify blanched whole almonds
 Can't identify  (1 ounce) squares unsweetened chocolate
 Can't identify (1 ounce) squares unsweetened chocolate, melted
-Can't identify ground blanched almonds
-Can't identify granola
 Can't identify chopped, unsalted dry-roasted peanuts
-Can't identify granola
-Can't identify dates, pitted and chopped
 Can't identify chopped, unsalted dry-roasted peanuts
 Can't identify  (1 ounce) squares unsweetened chocolate, melted
 Can't identify blanched slivered almonds, ground
-Can't identify ground cloves
 Can't identify minced fresh ginger root
 Can't identify chopped crystallized ginger
-Can't identify finely chopped walnuts
-Can't identify orange juice
 Can't identify thick applesauce, drained
 Can't identify cold, brewed coffee
-Can't identify ground cloves
-Can't identify butterscotch chips
-Can't identify cornflakes cereal
-Can't identify quick cooking oats
-Can't identify semisweet chocolate chips
-Can't identify crisp rice cereal
-Can't identify quick cooking oats
-Can't identify semisweet chocolate chips
-Can't identify ground cloves
-Can't identify crisp rice cereal
 Can't identify  (3 ounce) packages cream cheese
 Can't identify white sugar for decoration
 Can't identify  apple - peeled, cored and sliced
-Can't identify cocoa powder
 Can't identify walnut halves
 Can't identify chopped rhubarb
 Can't identify canned pumpkin
-Can't identify cream
-Can't identify blanched whole almonds
-Can't identify semisweet chocolate chips
-Can't identify whiskey
 Can't identify  (.25 ounce) package active dry yeast
-Can't identify melted butter
-Can't identify graham cracker crumbs
 Can't identify  (14 ounce) can sweetened condensed milk
-Can't identify semisweet chocolate chips
-Can't identify peanut butter chips
 Can't identify  (14 ounce) package individually wrapped caramels, unwrapped
 Can't identify  (18.25 ounce) package German chocolate cake mix
-Can't identify semisweet chocolate chips
 Can't identify  (1 ounce) squares semisweet chocolate, chopped
 Can't identify  (1 ounce) square unsweetened chocolate, chopped
-Can't identify semisweet chocolate chips
-Can't identify semisweet chocolate chips
-Can't identify quick cooking oats
-Can't identify semisweet chocolate chips
 Can't identify coarsely chopped walnuts
-Can't identify quick cooking oats
-Can't identify dates, pitted and chopped
 Can't identify  (1 ounce) squares unsweetened chocolate
 Can't identify confectioners sugar for decoration
-Can't identify orange juice
-Can't identify bourbon
 Can't identify candied cherries
-Can't identify dates, pitted and chopped
-Can't identify  ripe bananas
-Can't identify dates, pitted and chopped
-Can't identify lemon extract
-Can't identify finely chopped walnuts
 Can't identify any flavor fruit jam
 Can't identify  (1 ounce) squares unsweetened chocolate
 Can't identify  (5 ounce) package non-instant chocolate pudding mix
 Can't identify baking mix
-Can't identify unsweetened cocoa powder
-Can't identify melted butter
 Can't identify apples - peeled, cored and finely diced
 Can't identify  apple - peeled, cored and shredded
-Can't identify quick cooking oats
-Can't identify mashed bananas
-Can't identify cake flour
 Can't identify semolina flour
 Can't identify clarified butter
 Can't identify orange flower water
-Can't identify  blanched almonds
-Can't identify almond extract
-Can't identify orange juice
-Can't identify butterscotch chips
 Can't identify caraway seed
-Can't identify brandy
 Can't identify  large apple - peeled, cored and diced
 Can't identify diced apple without peel
 Can't identify  (1 ounce) squares unsweetened chocolate, chopped
 Can't identify applesauce
-Can't identify ground cloves
 Can't identify fructose (fruit sugar)
-Can't identify miniature marshmallows
-Can't identify semisweet chocolate chips
 Can't identify whole bran cereal
-Can't identify  bananas, mashed
-Can't identify finely chopped almonds
-Can't identify dried apricots, chopped
 Can't identify  (8 ounce) can crushed pineapple
-Can't identify bourbon
 Can't identify  (16 ounce) package phyllo dough
-Can't identify whole cloves
 Can't identify  cinnamon stick
 Can't identify  (1 ounce) squares unsweetened chocolate
 Can't identify amaretto liqueur
-Can't identify dried apricots
-Can't identify ground allspice
-Can't identify unsweetened cocoa powder
-Can't identify almond extract
 Can't identify fresh blueberries
-Can't identify almond extract
-Can't identify almond extract
 Can't identify fresh blueberries
 Can't identify  (14 ounce) package individually wrapped caramels, unwrapped
 Can't identify  (18.25 ounce) package German chocolate cake mix
-Can't identify chopped peanuts
-Can't identify semisweet chocolate chips
-Can't identify semisweet chocolate chips
-Can't identify graham cracker crumbs
-Can't identify semisweet chocolate chips
 Can't identify dried bread crumbs
-Can't identify butterscotch chips
-Can't identify semisweet chocolate chips
-Can't identify semisweet chocolate chips
-Can't identify almond extract
 Can't identify halved red candied cherries
 Can't identify strong brewed coffee
-Can't identify raisins (optional)
-Can't identify semisweet chocolate chips
-Can't identify almond extract
-Can't identify dates, pitted and chopped
-Can't identify fresh lemon juice
-Can't identify dates, pitted and chopped
 Can't identify unsweetened applesauce
 Can't identify  peaches
 Can't identify raisins for decorating
-Can't identify ground cloves
 Can't identify granulated sugar for decoration
-Can't identify granola
 Can't identify dried cranberries
-Can't identify hazelnuts, ground
-Can't identify ground cloves
-Can't identify ground allspice
-Can't identify dried currants
-Can't identify dates, pitted and chopped
-Can't identify lemon extract
-Can't identify chopped macadamia nuts
 Can't identify walnut halves
-Can't identify semisweet chocolate chips
 Can't identify  (1 ounce) squares unsweetened chocolate
 Can't identify  (1 ounce) squares semisweet chocolate
 Can't identify chocolate covered creamy mints
-Can't identify unsweetened cocoa powder
 Can't identify whole bran cereal
-Can't identify unsweetened cocoa powder
 Can't identify  (1 ounce) squares semisweet chocolate
-Can't identify unbleached all-purpose flour
-Can't identify unsweetened cocoa powder
 Can't identify  (1 ounce) squares milk chocolate, coarsely chopped
-Can't identify salted peanuts
-Can't identify unbleached all-purpose flour
-Can't identify salted peanuts
-Can't identify unbleached all-purpose flour
-Can't identify smooth peanut butter
 Can't identify  (1 ounce) squares semisweet chocolate
 Can't identify  (1 ounce) squares milk chocolate, chopped
-Can't identify finely chopped blanched almonds
-Can't identify unbleached all-purpose flour
-Can't identify unsweetened cocoa powder
 Can't identify apricot preserves
-Can't identify unbleached all-purpose flour
-Can't identify unbleached all-purpose flour
-Can't identify  lemons
 Can't identify crystal sugar
 Can't identify prepared mincemeat, drained
 Can't identify  large orange
 Can't identify orange liqueur
-Can't identify dates, pitted and chopped
 Can't identify  (1 ounce) squares unsweetened chocolate
-Can't identify almond paste
-Can't identify cake flour
-Can't identify almond paste
-Can't identify cake flour
 Can't identify chopped candied cherries
-Can't identify almond paste
-Can't identify cake flour
-Can't identify chopped blanched almonds
-Can't identify crushed cornflakes cereal
 Can't identify any flavor fruit jam
-Can't identify salted peanuts, chopped
 Can't identify carob powder
-Can't identify dates, pitted and chopped
 Can't identify confectioners sugar for decoration
 Can't identify  (1 ounce) squares unsweetened chocolate
-Can't identify almond extract
-Can't identify ground cloves
-Can't identify orange marmalade
 Can't identify confectioners sugar for decoration
-Can't identify sesame seeds
-Can't identify orange juice
-Can't identify orange juice
 Can't identify solid pack pumpkin puree
 Can't identify fresh cranberries
 Can't identify mashed, cooked butternut squash
-Can't identify ground allspice
-Can't identify unsweetened cocoa powder
 Can't identify  (1 ounce) square unsweetened chocolate, grated
 Can't identify confectioners sugar for decoration
 Can't identify chopped pistachio nuts
-Can't identify ground cardamom
-Can't identify dark molasses
 Can't identify cider vinegar
 Can't identify  (1 ounce) squares unsweetened chocolate
 Can't identify  (1 ounce) squares semisweet chocolate
-Can't identify unsweetened cocoa powder
 Can't identify  individually wrapped caramels, unwrapped
-Can't identify chopped macadamia nuts
-Can't identify hazelnuts, skinned and chopped
-Can't identify almond paste
 Can't identify pine nuts
-Can't identify sesame seeds
-Can't identify sesame oil (optional)
-Can't identify sesame seeds
-Can't identify chopped dried figs
 Can't identify  large orange
-Can't identify toasted walnuts, chopped
-Can't identify dark rum
-Can't identify quick cooking oats
-Can't identify light corn syrup
-Can't identify quick cooking oats
-Can't identify semisweet chocolate chips
-Can't identify light corn syrup
-Can't identify quick cooking oats
-Can't identify semisweet chocolate chips
-Can't identify crunchy peanut butter
-Can't identify semisweet chocolate chips
-Can't identify dates, pitted and chopped
-Can't identify finely chopped walnuts
 Can't identify amaretto liqueur
-Can't identify quick cooking oats
-Can't identify dried apricots
-Can't identify finely chopped almonds
 Can't identify amaretto liqueur
-Can't identify light corn syrup
-Can't identify ground hazelnuts
 Can't identify hazelnut liqueur
-Can't identify almond extract
-Can't identify green food coloring
 Can't identify coarsely chopped pistachios
-Can't identify orange juice
 Can't identify red candied cherries
-Can't identify semisweet chocolate chips
 Can't identify  (1 ounce) squares unsweetened chocolate
-Can't identify ground cloves
-Can't identify dried figs
 Can't identify pitted dates
 Can't identify instant espresso powder
 Can't identify  (1 ounce) squares unsweetened chocolate
 Can't identify halved macadamia nuts
-Can't identify chopped dried figs
 Can't identify candied cherries, chopped
-Can't identify dry sherry
 Can't identify super fine sugar
-Can't identify ground cloves
-Can't identify  lemon
-Can't identify dried currants
-Can't identify dates, pitted and chopped
-Can't identify  vanilla bean, crushed and broken into chunks
-Can't identify ground cloves
 Can't identify unsulfured molasses
 Can't identify superfine sugar
-Can't identify almond extract
-Can't identify  blanched almonds, halved
-Can't identify almond extract
 Can't identify any flavor fruit jam
-Can't identify cocoa
-Can't identify almond extract
-Can't identify almond extract
-Can't identify dried apricots
 Can't identify confectioners sugar for decoration
-Can't identify chopped cashews
-Can't identify light cream
-Can't identify chopped cashews
-Can't identify almond paste
-Can't identify almond extract
-Can't identify seedless red raspberry jam
 Can't identify chopped, unsalted dry-roasted peanuts
-Can't identify semisweet chocolate chips
-Can't identify ground allspice
-Can't identify ground cloves
 Can't identify grated zucchini
-Can't identify dates, pitted and chopped
 Can't identify  (1 ounce) squares German sweet chocolate
 Can't identify instant coffee granules
 Can't identify strong brewed coffee
-Can't identify cocoa powder
-Can't identify graham cracker crumbs
-Can't identify finely chopped walnuts
-Can't identify ground cloves
-Can't identify orange juice
-Can't identify dates, pitted and chopped
-Can't identify quick cooking oats
-Can't identify semisweet chocolate chips
-Can't identify chopped macadamia nuts
-Can't identify fresh lemon juice
-Can't identify chopped semisweet chocolate
-Can't identify chopped cashews
-Can't identify whole cashews
 Can't identify chopped pistachio nuts
-Can't identify ground cloves
-Can't identify chopped walnuts (optional)
 Can't identify apples - peeled, cored and finely diced
-Can't identify half-and-half cream
 Can't identify grated zucchini
-Can't identify finely chopped walnuts
-Can't identify almond extract
-Can't identify instant coffee powder
-Can't identify semisweet chocolate chips
 Can't identify granulated sugar for decoration
 Can't identify  thin chocolate covered mint cookies
 Can't identify  (.25 ounce) package active dry yeast
-Can't identify crushed vanilla wafers
-Can't identify cocoa powder
-Can't identify dark corn syrup
-Can't identify dates, pitted and chopped
-Can't identify unsweetened cocoa powder
-Can't identify finely chopped walnuts
-Can't identify unsweetened cocoa powder
-Can't identify semisweet chocolate chips
 Can't identify  (1 ounce) squares unsweetened chocolate
-Can't identify instant coffee powder
-Can't identify semisweet chocolate chips
 Can't identify finely chopped red and green candied cherries
 Can't identify  maraschino cherries, halved
 Can't identify ground mace
-Can't identify lemon extract
 Can't identify apricot preserves
-Can't identify light cream
 Can't identify  drop food coloring
-Can't identify light cream
 Can't identify granulated sugar for decoration
-Can't identify almond extract
-Can't identify chopped semisweet chocolate
 Can't identify frozen orange juice concentrate, thawed
-Can't identify self-rising flour
 Can't identify  walnut halves
-Can't identify dark brown sugar
-Can't identify light brown sugar
-Can't identify semisweet chocolate chunks
-Can't identify toasted hazelnuts
-Can't identify lemon marmalade
-Can't identify brandy
-Can't identify anise extract
-Can't identify anise seed
-Can't identify sesame seeds
-Can't identify almond paste, crumbled
-Can't identify self-rising flour
 Can't identify Madeira wine
 Can't identify white sugar for decoration
 Can't identify any flavor fruit jam
 Can't identify confectioners sugar for decoration
-Can't identify finely chopped blanched almonds
-Can't identify ground cardamom
-Can't identify semisweet chocolate chips
-Can't identify  milk chocolate candy kisses, unwrapped
-Can't identify semisweet chocolate chips
-Can't identify packed light brown sugar
-Can't identify  milk chocolate candy kisses, unwrapped
-Can't identify white chocolate chips
 Can't identify  (1 ounce) squares semisweet chocolate, chopped
 Can't identify butter or margarine, softened
-Can't identify unsweetened cocoa powder
 Can't identify  rolls chocolate-covered caramel candies
 Can't identify candy-coated milk chocolate pieces
-Can't identify semisweet chocolate chips
-Can't identify crushed potato chips
-Can't identify semisweet chocolate chips
 Can't identify candy-coated milk chocolate pieces
-Can't identify crushed potato chips
 Can't identify  (18.25 ounce) package yellow cake mix
-Can't identify semisweet chocolate chips
-Can't identify quick cooking oats
-Can't identify dried apricots
 Can't identify  (18.25 ounce) package chocolate cake mix
-Can't identify butterscotch chips
 Can't identify  (18.25 ounce) package moist yellow cake mix
-Can't identify semisweet chocolate chips
 Can't identify chopped and toasted macadamia nuts
 Can't identify ground white pepper
-Can't identify ground cardamom
-Can't identify finely chopped almonds (optional)
 Can't identify corn oil spread
-Can't identify quick cooking oats
-Can't identify golden raisins
-Can't identify unsweetened cocoa powder
-Can't identify quick cooking oats
-Can't identify natural peanut butter
-Can't identify cocoa powder
-Can't identify semisweet chocolate chips
-Can't identify chopped walnuts (optional)
-Can't identify ground cloves
-Can't identify ground allspice
-Can't identify quick cooking oats
 Can't identify unsweetened applesauce
-Can't identify unsweetened cocoa powder
-Can't identify quick cooking oats
-Can't identify chopped walnuts (optional)
-Can't identify semisweet chocolate chips
 Can't identify  (1 ounce) squares unsweetened chocolate
-Can't identify unsweetened cocoa powder
-Can't identify crunchy peanut butter
-Can't identify quick-cooking oats
 Can't identify vanilla baking chips
-Can't identify macadamia nuts, chopped
 Can't identify  (18.25 ounce) package reduced fat white cake mix
 Can't identify egg substitute
-Can't identify peanut butter chips
-Can't identify semisweet chocolate chips
-Can't identify chopped macadamia nuts
-Can't identify ground cloves
 Can't identify chopped apples
-Can't identify unsweetened cocoa powder
 Can't identify granulated artificial sweetener
-Can't identify cake flour
 Can't identify unsweetened applesauce
 Can't identify confectioners sugar for decoration
 Can't identify German sweet chocolate, grated
 Can't identify German sweet chocolate, grated
-Can't identify quick cooking oats
-Can't identify crunchy peanut butter
 Can't identify high protein crisp rice and wheat cereal
-Can't identify unsweetened cocoa powder
-Can't identify unsweetened cocoa powder
-Can't identify crunchy peanut butter
-Can't identify semisweet chocolate chips
 Can't identify  (18.25 ounce) package devils food cake mix
 Can't identify coarsely chopped chocolate-covered toffee candy bars
-Can't identify semisweet chocolate chips
-Can't identify semisweet chocolate chips
-Can't identify light molasses
-Can't identify ground cloves
 Can't identify confectioners sugar for decoration
-Can't identify crispy rice cereal
 Can't identify  (1 ounce) squares unsweetened chocolate
 Can't identify confectioners sugar for decoration
-Can't identify white chocolate chips
-Can't identify macadamia nuts, chopped
 Can't identify high protein crisp rice and wheat cereal
 Can't identify  (12 ounce) package cornflakes cereal
 Can't identify  peppermint candy canes, crushed
-Can't identify quick cooking oats
-Can't identify cocoa powder
-Can't identify chopped walnuts (optional)
-Can't identify raisins (optional)
-Can't identify flaked coconut (optional)
-Can't identify light corn syrup
-Can't identify crispy rice cereal
-Can't identify semisweet chocolate chips
-Can't identify butterscotch chips
-Can't identify unsweetened cocoa powder
 Can't identify  fruit flavored hard candies
-Can't identify semisweet chocolate chips
-Can't identify half-and-half cream
-Can't identify sesame seeds
-Can't identify cake flour
-Can't identify ground cloves
-Can't identify light corn syrup
-Can't identify smooth peanut butter
-Can't identify cornflakes cereal
 Can't identify  (12 ounce) jar caramel ice cream topping
-Can't identify  buttery round crackers
-Can't identify semisweet chocolate chips
 Can't identify  (16 ounce) can chocolate syrup
 Can't identify creme de menthe liqueur
-Can't identify semisweet chocolate chips
 Can't identify butter flavored shortening
 Can't identify apple pie spice
 Can't identify mini candy-coated chocolates
-Can't identify almond extract
-Can't identify finely chopped walnuts
-Can't identify  milk chocolate candy kisses, unwrapped
 Can't identify  (12 ounce) package vanilla wafers
-Can't identify tequila
-Can't identify orange marmalade
-Can't identify light corn syrup
 Can't identify  (9 ounce) package chocolate wafer cookies, crushed
-Can't identify unsweetened cocoa powder
-Can't identify instant coffee powder
 Can't identify coffee flavored liqueur
-Can't identify light corn syrup
-Can't identify pureed dates
-Can't identify cake flour
 Can't identify  maraschino cherries, halved
-Can't identify semisweet chocolate chips
-Can't identify cinnamon sugar
-Can't identify milk chocolate chips
 Can't identify instant coffee granules
-Can't identify unsweetened cocoa powder
-Can't identify unsweetened cocoa powder
-Can't identify raisins (optional)
-Can't identify flaked coconut (optional)
-Can't identify crispy rice cereal
-Can't identify unsweetened cocoa powder
-Can't identify graham cracker crumbs
-Can't identify semisweet chocolate chips
-Can't identify butterscotch chips
 Can't identify  (14 ounce) can sweetened condensed milk
-Can't identify sliced fresh strawberries
 Can't identify pasteurized liquid egg whites
-Can't identify unsweetened cocoa powder
-Can't identify quick cooking oats
-Can't identify chopped peanuts
-Can't identify dates, pitted and chopped
-Can't identify dark molasses
-Can't identify ground cloves
-Can't identify ground allspice
-Can't identify quick cooking oats
-Can't identify quick cooking oats
-Can't identify  small gumdrops
-Can't identify gumdrops, halved
 Can't identify wheat germ
 Can't identify low sodium baking powder
-Can't identify ground allspice
 Can't identify frozen apple juice concentrate, thawed
 Can't identify  (19.8 ounce) package brownie mix
-Can't identify white chocolate chips
 Can't identify  unsalted soda crackers
-Can't identify semisweet chocolate chips
-Can't identify chopped pecans (optional)
 Can't identify  (18.25 ounce) package devils food cake mix
 Can't identify  (14 ounce) can sweetened condensed milk
-Can't identify unsweetened cocoa powder
-Can't identify semisweet chocolate chips
-Can't identify graham cracker crumbs
-Can't identify finely chopped walnuts
-Can't identify semisweet chocolate chips
 Can't identify crushed saltine crackers
-Can't identify semisweet chocolate chips
-Can't identify chopped walnuts (optional)
 Can't identify  (14 ounce) can sweetened condensed milk
-Can't identify dates, pitted and chopped
-Can't identify semisweet chocolate chips
 Can't identify  (1 ounce) squares unsweetened chocolate
-Can't identify semisweet chocolate chips
 Can't identify  (1 ounce) squares unsweetened chocolate
 Can't identify  (3 ounce) package fruit flavored Jell-O mix
 Can't identify  (1 ounce) squares unsweetened chocolate, melted
-Can't identify strawberry jam
-Can't identify semisweet chocolate chips
-Can't identify butterscotch chips
 Can't identify  (5 ounce) cans chow mein noodles
 Can't identify cashew halves
-Can't identify brandy
 Can't identify gum drops, no licorice ones
-Can't identify chopped peanuts
 Can't identify white sugar for decoration
 Can't identify  (9 ounce) bags milk chocolate candy kisses, unwrapped
 Can't identify  (3.5 ounce) packages flaked coconut, toasted
 Can't identify rum flavored extract
 Can't identify red and green candied cherries, halved
-Can't identify anise seed
-Can't identify semisweet chocolate chips
 Can't identify  drops red food coloring
-Can't identify anise extract
-Can't identify anise seed
-Can't identify cake flour
-Can't identify semisweet chocolate chips
 Can't identify  (8 ounce) packages cream cheese, softened
-Can't identify  graham crackers
-Can't identify semisweet chocolate chips
-Can't identify ground cloves
-Can't identify chopped fresh figs
 Can't identify  (18.25 ounce) package lemon cake mix with pudding
-Can't identify crisp rice cereal
-Can't identify unsweetened cocoa powder
 Can't identify  (1 ounce) square unsweetened chocolate
-Can't identify  graham crackers, or more as needed
-Can't identify packed light brown sugar
 Can't identify butter flavored shortening
-Can't identify semisweet chocolate chips
-Can't identify butterscotch chips
-Can't identify cake flour
-Can't identify anise seed
-Can't identify crunchy peanut butter
-Can't identify semisweet chocolate chips
 Can't identify  (8 ounce) package cream cheese, softened
 Can't identify any flavor fruit jam
 Can't identify  (3 ounce) package cream cheese, softened
 Can't identify candied mixed fruit
-Can't identify light sesame oil
-Can't identify ground cardamom
-Can't identify ground cloves
-Can't identify ground allspice (optional)
-Can't identify ground nutmeg (optional)
-Can't identify semisweet chocolate chips
-Can't identify dates, pitted and chopped
-Can't identify crisp rice cereal
-Can't identify flaked coconut (optional)
-Can't identify confectioners sugar (optional)
-Can't identify cornflakes cereal
-Can't identify semisweet chocolate chips
-Can't identify anise extract
-Can't identify anise extract
-Can't identify semisweet chocolate chips
-Can't identify semisweet chocolate chips
-Can't identify crisp rice cereal
-Can't identify semisweet chocolate chips
 Can't identify white sugar for decoration
-Can't identify instant coffee powder
 Can't identify chopped and toasted macadamia nuts
 Can't identify granulated sugar for decoration
-Can't identify unsweetened cocoa powder
-Can't identify lemon extract
-Can't identify cake flour
 Can't identify  (1 ounce) square bittersweet chocolate, chopped
-Can't identify semisweet chocolate chips
-Can't identify butterscotch chips
-Can't identify peanuts
 Can't identify  (5 ounce) cans chow mein noodles
-Can't identify crushed cornflakes cereal
-Can't identify miniature marshmallows
-Can't identify crisp rice cereal
-Can't identify paprika
-Can't identify freshly ground black pepper
-Can't identify ground cloves
-Can't identify ground coriander seed
-Can't identify anise seed
 Can't identify  (1 ounce) squares semisweet chocolate
-Can't identify crisp rice cereal
-Can't identify semisweet chocolate chips
-Can't identify ground blanched almonds
-Can't identify  graham crackers
 Can't identify blanched slivered almonds
-Can't identify packed light brown sugar
 Can't identify  (1.55 ounce) bars milk chocolate candy bar, chopped
-Can't identify ground cloves
 Can't identify grated zucchini
-Can't identify ice water
 Can't identify  (7 ounce) jar marshmallow creme
 Can't identify  drops red food coloring
 Can't identify super fine sugar
-Can't identify almond extract
-Can't identify semisweet chocolate chips
-Can't identify light corn syrup
 Can't identify  small peppermint patties
-Can't identify semisweet chocolate chips
-Can't identify crushed vanilla wafers
-Can't identify chopped walnuts (optional)
-Can't identify quick cooking oats
-Can't identify semisweet chocolate chips
-Can't identify chopped peanuts
 Can't identify mini semi-sweet chocolate chips
-Can't identify peppermint extract
 Can't identify  drops green food coloring
-Can't identify almond extract
-Can't identify semisweet chocolate chips
-Can't identify crushed vanilla wafers
-Can't identify finely chopped walnuts
-Can't identify sifted cocoa
-Can't identify dark corn syrup
-Can't identify bourbon
-Can't identify semisweet chocolate chips
-Can't identify unsweetened cocoa powder
 Can't identify  (10 ounce) jar maraschino cherries
-Can't identify semisweet chocolate chips
-Can't identify quick cooking oats
-Can't identify flaked coconut (optional)
-Can't identify miniature semi-sweet chocolate chips (optional)
-Can't identify self-rising flour
-Can't identify finely chopped walnuts
-Can't identify almond extract
 Can't identify toffee baking bits
-Can't identify crushed cornflakes cereal
-Can't identify cocoa powder
-Can't identify semisweet chocolate chips
-Can't identify peanut butter chips
 Can't identify  chocolate covered peanut butter cups, cut into eighths
-Can't identify salt (optional)
-Can't identify ground cinnamon (optional)
-Can't identify semisweet chocolate chips
-Can't identify quick cooking oats
-Can't identify light cream
-Can't identify lemon extract
-Can't identify  (18.25 ounce) packages devils food cake mix
-Can't identify  (18.25 ounce) packages devils food cake mix
 Can't identify  (1 ounce) squares unsweetened chocolate, melted
-Can't identify chopped walnuts (optional)
-Can't identify cake flour
-Can't identify cocoa powder
-Can't identify unbleached all-purpose flour
-Can't identify finely chopped walnuts
-Can't identify ground cardamom
-Can't identify dates, pitted and chopped
-Can't identify light corn syrup
-Can't identify chopped semisweet chocolate
 Can't identify vanilla sugar
 Can't identify butter or margarine, melted
-Can't identify graham cracker crumbs
-Can't identify semisweet chocolate chips

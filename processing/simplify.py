@@ -122,6 +122,7 @@ def parse_ingredient(ing):
         pass
         #print u"Possible match for \"", ing, u"\": ", k
 
+  print ing
   return None
 
 infile = open(inpath)
@@ -131,13 +132,13 @@ errfile = codecs.open(errpath, encoding='utf-8', mode='w')
 for line in infile:
   row = json.loads(line)
 
-  print row['name'].encode('ascii', 'ignore')
+  #print row['name'].encode('ascii', 'ignore')
   ingredients_simple = []
   for ing in row['ingredients']:
   
     (amount, remainder) = parse_amount(ing)
     if amount is None:
-      print ing
+      #print ing
       continue
     
     (unit, utype, remainder) = parse_unit(remainder)
@@ -148,13 +149,13 @@ for line in infile:
       continue
 
     if unit is None:
-      print "[%0.1f] %s" % (amount, ingredient)
+      #print "[%0.1f] %s" % (amount, ingredient)
       ingredients_simple.append({'amount':amount, 'type':'counted', 'item':ingredient})
     elif utype is 'volume':
-      print "[%0.2f ml] %s" % (amount*unit, ingredient)
+      #print "[%0.2f ml] %s" % (amount*unit, ingredient)
       ingredients_simple.append({'amount':amount*unit, 'type':'volume', 'item':ingredient})
     else:
-      print "[%0.2f g] %s" % (amount*unit, ingredient)
+      #print "[%0.2f g] %s" % (amount*unit, ingredient)
       ingredients_simple.append({'amount':amount*unit, 'type':'mass', 'item':ingredient})
   
   row_simple = {'name':row['name'], 'category':row['category'], 'ingredients':ingredients_simple}

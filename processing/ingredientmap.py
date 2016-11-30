@@ -2,6 +2,7 @@
 ingredient_remap = {
 "bread flour":"flour",
 "wheat flour":"flour",
+"cake flour": "flour",
 "lemon peel":"lemon zest",
 "lemon rind":"lemon zest",
 "orange rind":"orange zest",
@@ -12,54 +13,104 @@ ingredient_remap = {
 "heavy whipping cream":"whipping cream",
 "distilled white vinegar":"vinegar",
 "extra virgin olive oil":"olive oil",
-"rolled oat":"oats",
-"rolled oats": "oats",
-"quick cooking oats": "oats",
+"oat":"oats",
 "raspberry jam": "jam",
+"strawberry jam": "jam",
+"lemon marmalade": "jam",
+"orange marmalade": "jam",
 "instant powdered milk": "milk powder",
 "apricot spreadable fruit": "jam",
 "white corn syrup": "corn syrup",
-"semisweet chocolate chips": "chocolate chip",
-"milk chocolate candy kisses, unwrapped": "milk chocolate",
+"milk chocolate chip": "chocolate chip",
+"chocolate chunk": "chocolate chip",
+"crisp rice cereal": "crispy rice cereal",
+"white chocolate chip": "white chocolate",
+"milk chocolate candy kiss": "chocolate chip",
+"tequila": "liquer", #Questionable, alcohol type might matter
+"whiskey": "liquer",
+"brandy": "liquer",
+"bourbon": "liquer",
+"rum": "liquer",
+"sherry": "liquer",
+"graham cracker crumb": "graham cracker",
+"anise seed": "anise",
+"coriander seed": "coriander",
+"cocoa powder": "cocoa",
+"(18.25 ounce) packages devils food cake mix": "cake mix", #questionable, how deal with different mixes?
 "pecan halv":"pecan", # Workaround
 "egg whit":"egg white", # Workaround
 "molass":"molasses", # Workaround
+"dark molass": "molasses", #Workaround
+"clov": "cloves", #Workaround
+"dat": "date", #Workaround
+"cinnamon red hot candi": "cinnamon red hot candy", #Workaround
+"strawberri": "strawberry", #Workaround
 "unsalted butter":"butter" # Questionable, salt content matters
 }
 
 adjectives = [
 'boneless',
 'boiling',
+'blanched',
+'buttery',
 'chopped',
+'crunchy',
 'cold',
 'cooked',
+'cooking',
 'cubed',
 'crushed',
 'creamy',
+'dark',
 'diced',
 'dried',
 'dry',
 'flaked',
+'finely',
 'frozen',
+'fresh',
+'freshly',
 'grated',
 'green',
 'ground',
 'hot',
+'ice',
+'instant',
 'large',
+'light',
 'low-fat',
 'lukewarm',
 'mashed',
+'melted',
 'minced',
+'miniature',
+'natural',
 'packed',
 'peeled',
+'pureed',
+'(optional)', #do we want to include these ingredients?
+'quick',
+'quick-cooking',
 'red',
+'ripe',
+'rolled',
+'round',
 'real',
+'salted', #okay to remove?
+'seedless',
 'semi-sweet',
+'semisweet',
 'sifted',
 'shredded',
 'sliced',
+'small',
+'smooth',
+'toasted',
 'unbaked',
 'unwrapped',
-'warm'
+'unsweetened',
+'unbleached',
+'warm',
+'whole'
 ]
 
