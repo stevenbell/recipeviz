@@ -14,13 +14,32 @@ infile = open(inpath)
 # Spin through the database and select the matching ones
 keyword = 'cookie'
 
-# List of all ingredients - currently faked with values we wanted to pull (better to find popular ones)
-#all_ingredients = ['name']
-all_ingredients = ['name', 'flour', 'egg', 'white sugar', 'butter', 'milk']
 # Sort ingredients by popularity; keep only the top few
 # Use 2x the median number of ingredients
 
 all_recipes = []
+
+# Reads file to find the most popular ingredients
+ingredient_counter = {}
+
+for line in infile:
+  row = json.loads(line)
+  if keyword in row['name'].lower():
+    for ing in row['ingredients']:
+      if ing['item'] not in ingredient_counter:
+        ingredient_counter[ing['item']] = 0
+      else:
+        ingredient_counter[ing['item']] += 1
+
+#print ingredient_counter
+
+popular = sorted(ingredient_counter, key=ingredient_counter.get, reverse = True)
+all_ingredients = popular[:20]
+all_ingredients.append('name')
+
+#print all_ingredients
+
+infile = open(inpath)
 
 for line in infile:
   row = json.loads(line)
