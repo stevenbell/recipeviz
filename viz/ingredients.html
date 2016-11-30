@@ -13,22 +13,7 @@
 
   <script src="js/d3.v4.min.js"></script>
 
-  <script>
-d3.json("ingredients_matrix.json", function(error, data) {
-  if(error){
-    console.warn(error);
-    return;
-  }
-
-  // No error, display the data
-  var svg = d3.select("svg");
-  var dim = {width: +svg.attr("width"), height: +svg.attr("height")}
-  var margin = {top:50, bottom:50, left:50, right:50};
-
-  console.log(data);
-});
-
-  </script>
+  <script src="js/app.js"></script>
 
 </body>
 </html>
