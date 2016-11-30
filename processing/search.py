@@ -8,7 +8,7 @@ import codecs # For writing unicode
 #from IPython import embed
 
 inpath = 'ingredients_simplified.json'
-outpath = 'ingredients_matrix.json'
+outpath = 'ingredients_matrix.csv'
 infile = open(inpath)
 
 # Spin through the database and select the matching ones
@@ -37,9 +37,9 @@ for line in infile:
 # Write a CSV file for the top ingredients, putting "-1" where it's not used,
 # and ignoring any extra ingredients.
 
-# outfile = csv.DictWriter(codecs.open(outpath, encoding='utf-8', mode='w'), all_ingredients, restval=0)
-# outfile.writeheader()
-# outfile.writerows(all_recipes)
+outfile = csv.DictWriter(codecs.open(outpath, encoding='utf-8', mode='w'), all_ingredients, restval=0)
+outfile.writeheader()
+outfile.writerows(all_recipes)
 
-json.dump(all_recipes, open(outpath, 'w'))
+#json.dump(all_recipes, open(outpath, 'w'))
 
