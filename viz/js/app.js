@@ -6,7 +6,7 @@ var flour = [1, 2, 3, 4]
 var num_ing = 4;
 
 //Total visualization area
-var V_HEIGHT = 1200
+var V_HEIGHT = 600
 var V_WIDTH = 600
 
 var margin = {
@@ -32,7 +32,7 @@ var histogram = function(data_in, chart_id, value, chart_title) {
   var domain = d3.extent(data_in, function(d){return d[value];});
   var xScale = d3.scaleLinear()
       .domain(domain)
-      .range([0, 300]);
+      .range([0, 400]);
 
   var xAxis = d3.axisBottom(xScale)
     .ticks(6);
@@ -62,6 +62,9 @@ var histogram = function(data_in, chart_id, value, chart_title) {
     .text(chart_title);
 }
 
+var eggChart = dc.scatterPlot("#eggChart");
+var flourChart = dc.scatterPlot("#flourChart");
+
 // Load Data
 d3.json("ingredients_matrix.json", function(error, data) {
   if(error){
@@ -78,8 +81,8 @@ d3.json("ingredients_matrix.json", function(error, data) {
   var cf = crossfilter(data);
   var dim_name = cf.dimension(function(d){return d.name;});
   //I know the top ingredients. This should be edited to be adaptable.
-  var dim_egg = cf.dimension(function(d){return d.egg;});
-  var dim_flour = cf.dimension(function(d){return d['all-purpose flour'];});
+  var dim_egg = cf.dimension(function(d){return [d.egg, 0];});
+  var dim_flour = cf.dimension(function(d){return [d['all-purpose flour'], 0];});
   var dim_vanilla = cf.dimension(function(d){return d.vanilla;});
   var dim_sugar = cf.dimension(function(d){return d['white sugar'];});
 
@@ -98,19 +101,47 @@ d3.json("ingredients_matrix.json", function(error, data) {
   dim_vanilla.filter([0, Infinity]);
   dim_sugar.filter([0, Infinity]);
 
+  //Group
+  g_egg = dim_egg.group();
+  g_flour = dim_flour.group();
+
   /*dim_egg.top(Infinity).forEach(function(d, i) {
     console.log(JSON.stringify(d));
   });*/
 
   // Function that renders the plots
-  var render_plots = function() {
+  /*var render_plots = function() {
     histogram(dim_egg.top(Infinity), 1, "egg", "Eggs");
     histogram(dim_flour.top(Infinity), 2, "all-purpose flour", "Flour");
     histogram(dim_vanilla.top(Infinity), 3, "vanilla", "Vanilla");
     histogram(dim_sugar.top(Infinity), 4, "white sugar", "Sugar");
-  }
+  }*/
+  //var top_value = dim_egg.top(1);
+  //console.log(top_value[0]);
+  //var bottom_value = dim_egg.bottom(1);
+  //var egg_domain = [bottom_value[0].value, top_value[0].value];
+  eggChart.x(d3.scale.linear()
+    .domain([1,6])
+    .range([0, 400]))
+    .dimension(dim_egg)
+    .group(g_egg)
+    .symbolSize(8)
+    .clipPadding(10)
+    .excludedOpacity(0.5);
+
+  flourChart.x(d3.scale.linear()
+    .domain([0,1000])
+    .range([0, 400]))
+    .dimension(dim_flour)
+    .group(g_flour)
+    .symbolSize(8)
+    .clipPadding(10)
+    .excludedColor("#ddd");
+
+  dc.renderAll();
+
 
   // Render plots for first time
-  render_plots();
+  //render_plots();
 
 });

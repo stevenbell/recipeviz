@@ -6,15 +6,26 @@
     body { background: white; }
   </style> 
 
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/dc/2.0.0-beta.32/dc.css"/>
+
 </head>
 <body>
-  <script src="js/d3.v4.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
 
-  <script src="js/crossfilter.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/dc/2.0.0-beta.32/dc.min.js"></script>
+
+  <div id="viz">
+    <div id="eggChart" style="width:600px; height:200px">
+      <div class="rest" style="visibility: hidden;">selected:<span class="filter"></span>
+        <a href="javascript:eggChart.filterAll();dc.redrawAll();">reset</a>
+      </div>
+    </div>
+    <div id="flourChart" style="width:600px; height:200px"></div>
+  </div>
 
   <script src="js/app.js"></script>
-
-  <div id="viz"></div>
 
 </body>
 </html>
