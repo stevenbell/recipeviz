@@ -17,12 +17,24 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/dc/2.0.0-beta.32/dc.min.js"></script>
 
   <div id="viz">
+
     <div id="eggChart" style="width:600px; height:200px">
-      <div class="rest" style="visibility: hidden;">selected:<span class="filter"></span>
+      <div class="reset" style='visibility: hidden;'>selected:<span class="filter"></span>
         <a href="javascript:eggChart.filterAll();dc.redrawAll();">reset</a>
       </div>
     </div>
-    <div id="flourChart" style="width:600px; height:200px"></div>
+
+    <div id="flourChart" style="width:600px; height:200px">
+      <div class="reset" style='visibility: hidden;'>selected:<span class="filter"></span>
+        <a href="javascript:flourChart.filterAll();dc.redrawAll();">reset</a>
+      </div>
+    </div>
+
+    <div id="nameChart" style="width:600px; height:200px">
+      <div class="reset" style='visibility: hidden;'>selected:<span class="filter"></span>
+        <a href="javascript:flourChart.filterAll();dc.redrawAll();">reset</a>
+      </div>
+    </div>
   </div>
 
   <script src="js/app.js"></script>

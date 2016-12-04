@@ -16,54 +16,9 @@ var margin = {
   right: 50
 };
 
-//Function to draw a single scatterplot - hopefully reusable
-var histogram = function(data_in, chart_id, value, chart_title) {
-
-  var height = V_HEIGHT / num_ing - margin.top - margin.bottom;
-  var width = V_WIDTH - margin.left - margin.right;
-
-  var svg = d3.select("#viz").append("svg")
-      .attr("id", "chart" + chart_id)
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")"); // make sure translate graphs properly
-
-  var domain = d3.extent(data_in, function(d){return d[value];});
-  var xScale = d3.scaleLinear()
-      .domain(domain)
-      .range([0, 400]);
-
-  var xAxis = d3.axisBottom(xScale)
-    .ticks(6);
-
-  svg.append('g')
-     .attr("id", "plot" + chart_id)
-     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-     .call(xAxis);
-
-  d3.select("#plot" + chart_id)
-     .append('g')
-     .selectAll('rect')
-     .data(data_in)
-     .enter()
-       .append('rect')
-       .attr('width', 3)
-       .attr('height', 10)
-       .attr('x', function(d) {
-          return xScale(d[value]);
-       })
-       .attr('y', -5)
-       .style('fill', 'blue')
-       .style('fill-opacity', .5);
-
-  svg.append('text')
-    .attr("transform", "translate(" + 0 + "," + margin.top + ")")
-    .text(chart_title);
-}
-
 var eggChart = dc.scatterPlot("#eggChart");
 var flourChart = dc.scatterPlot("#flourChart");
+var nameChart = dc.bubbleChart("#nameChart");
 
 // Load Data
 d3.json("ingredients_matrix.json", function(error, data) {
@@ -75,10 +30,9 @@ d3.json("ingredients_matrix.json", function(error, data) {
   //extract top 4 (or however many) ingredient names, set up
   //dimensions for each?
 
-  //console.log(data);
-
   // Set up Crossfilter
   var cf = crossfilter(data);
+  var all = cf.groupAll();
   var dim_name = cf.dimension(function(d){return d.name;});
   //I know the top ingredients. This should be edited to be adaptable.
   var dim_egg = cf.dimension(function(d){return [d.egg, 0];});
@@ -86,62 +40,41 @@ d3.json("ingredients_matrix.json", function(error, data) {
   var dim_vanilla = cf.dimension(function(d){return d.vanilla;});
   var dim_sugar = cf.dimension(function(d){return d['white sugar'];});
 
-  //console.log(dim_flour.top(Infinity));
-
-  //set up groups - necessary?
-  /*var group_egg = dim_egg.group();
-
-  group_egg.top(Infinity).forEach(function(d, i) {
-    console.log(JSON.stringify(d));
-  });*/
-
-  //Filter to only show values for which egg is not -1
-  dim_egg.filter([0, Infinity]);
-  dim_flour.filter([0, Infinity]);
-  dim_vanilla.filter([0, Infinity]);
-  dim_sugar.filter([0, Infinity]);
 
   //Group
   g_egg = dim_egg.group();
   g_flour = dim_flour.group();
+  g_name = dim_name.group();
 
-  /*dim_egg.top(Infinity).forEach(function(d, i) {
-    console.log(JSON.stringify(d));
-  });*/
-
-  // Function that renders the plots
-  /*var render_plots = function() {
-    histogram(dim_egg.top(Infinity), 1, "egg", "Eggs");
-    histogram(dim_flour.top(Infinity), 2, "all-purpose flour", "Flour");
-    histogram(dim_vanilla.top(Infinity), 3, "vanilla", "Vanilla");
-    histogram(dim_sugar.top(Infinity), 4, "white sugar", "Sugar");
-  }*/
-  //var top_value = dim_egg.top(1);
-  //console.log(top_value[0]);
-  //var bottom_value = dim_egg.bottom(1);
-  //var egg_domain = [bottom_value[0].value, top_value[0].value];
-  eggChart.x(d3.scale.linear()
-    .domain([1,6])
-    .range([0, 400]))
+  //hide axes: https://github.com/dc-js/dc.js/issues/548
+  eggChart.x(d3.scale.linear())
+    .yAxisPadding(3)
+    .xAxisPadding(1)
+    .elasticX(true)
+    .elasticY(true)
     .dimension(dim_egg)
     .group(g_egg)
-    .symbolSize(8)
+    .symbolSize(10)
     .clipPadding(10)
-    .excludedOpacity(0.5);
+    .excludedColor("red")
+    .controlsUseVisibility(true);
 
-  flourChart.x(d3.scale.linear()
-    .domain([0,1000])
-    .range([0, 400]))
+  flourChart.x(d3.scale.linear())
+    .yAxisPadding(3)
+    .xAxisPadding(100)
+    .elasticX(true)
+    .elasticY(true)
     .dimension(dim_flour)
     .group(g_flour)
-    .symbolSize(8)
+    .symbolSize(10)
     .clipPadding(10)
-    .excludedColor("#ddd");
+    .excludedColor("red")
+    .controlsUseVisibility(true);
+
+  nameChart.x(d3.scale.linear())
+    .dimension(dim_name)
+    .group(g_name); 
 
   dc.renderAll();
-
-
-  // Render plots for first time
-  //render_plots();
 
 });
