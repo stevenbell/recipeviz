@@ -43,16 +43,16 @@ d3.json("ingredients_matrix.json", function(error, data) {
   var dim_name = cf.dimension(function(d){return d.name;});
   var g_name = dim_name.group().reduceCount();
 
-  console.log(g_name.top(5));
-
   nameChart.x(d3.scale.ordinal().domain(dim_name))
     .xUnits(dc.units.ordinal)
     .dimension(dim_name)
     .group(g_name)
-    .yAxisPadding(1)
-    .xAxisPadding(1)
+    .margins({ top: 0, right: 100, bottom: 0, left: 60})
+    .width(window.innerWidth - 50)
+    .height(150)
     .elasticY(true)
     .elasticX(true)
+    .yAxisPadding(1)
     .colorDomain([-500, 500])
     .keyAccessor(function(d) {
       return d.key;
@@ -64,7 +64,7 @@ d3.json("ingredients_matrix.json", function(error, data) {
     })
     .radiusValueAccessor(function(d) {
       if(d.value == 0 || nameChart.filters().length == 0 || nameChart.filters().indexOf(d.key) == -1)
-        return .5;
+        return .25;
       return 3;
     })
     .controlsUseVisibility(true)
@@ -85,8 +85,6 @@ d3.json("ingredients_matrix.json", function(error, data) {
             });
         });*/
 
-
-  //hide axes: https://github.com/dc-js/dc.js/issues/548
   // Create a chart for each of the ingredients
   for (i = 0; i < keys.length; i++) {
     dim_ing[keys[i]] = cf.dimension(function(d) {
@@ -96,8 +94,8 @@ d3.json("ingredients_matrix.json", function(error, data) {
 
     var div = visualization.append('div')
       .attr('id', keys[i] + 'Chart') //remove namespaces here
-      .attr('class', 'chart')
-      .attr('style', 'width:150px; height:400px; padding:10px;');
+      .attr('class', 'chart');
+      //.attr('style', 'width:150px; height:400px; padding:10px;');
     div.append('h4')
         .html(names[i]);
     div.append('div')
@@ -111,6 +109,8 @@ d3.json("ingredients_matrix.json", function(error, data) {
 
     charts[keys[i]].x(d3.scale.linear())
       .y(d3.scale.linear())
+      .width(200)
+      .height(400)
       .yAxisPadding(1)
       .xAxisPadding(1)
       .elasticX(true)
@@ -119,11 +119,22 @@ d3.json("ingredients_matrix.json", function(error, data) {
       .group(g_ing[keys[i]])
       .symbolSize(10)
       .clipPadding(20)
-      .excludedOpacity(.5)
+      .excludedOpacity(.3)
       .controlsUseVisibility(true);
   }
 
   dc.renderAll();
+  //hide axes
   d3.selectAll('.chart svg g g.axis.x').style('display', 'none');
+  d3.selectAll('#nameChart svg g g.axis.y').style('display', 'none');
+  //make it so bubbles don't clip
+  d3.selectAll('#nameChart svg g g.chart-body').attr('clip-path', null);
+  //adjust symbol opacity
+  d3.selectAll('.chart svg g g.chart-body path.symbol').style('opacity', '.7');
+
+  window.onresize = function(event) {
+    nameChart.width(window.innerWidth).transitionDuration(750);
+    dc.redrawAll();
+  }
 
 });
