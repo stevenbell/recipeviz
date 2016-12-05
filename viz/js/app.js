@@ -58,7 +58,7 @@ d3.json("ingredients_matrix.json", function(error, data) {
       return d.key;
     })
     .valueAccessor(function(d) {
-      if(nameChart.filters().length != 0 && nameChart.filters().indexOf(d.key) != -1)
+      if(nameChart.filters().length != 0 && nameChart.filters().indexOf(d.key) != -1 && d.value != 0)
         return 2;
       return d.value;
     })
@@ -94,13 +94,13 @@ d3.json("ingredients_matrix.json", function(error, data) {
     });
     g_ing[keys[i]] = dim_ing[keys[i]].group();
 
-    visualization.append('div')
+    var div = visualization.append('div')
       .attr('id', keys[i] + 'Chart') //remove namespaces here
       .attr('class', 'chart')
-      .attr('style', 'width:200px; height:400px; padding:10px;')
-      .append('h4')
-        .html(names[i])
-        .append('div')
+      .attr('style', 'width:150px; height:400px; padding:10px;');
+    div.append('h4')
+        .html(names[i]);
+    div.append('div')
           .attr('class', "reset")
           .attr('style', 'visibility: hidden;')
           .append('a')
@@ -124,5 +124,6 @@ d3.json("ingredients_matrix.json", function(error, data) {
   }
 
   dc.renderAll();
+  d3.selectAll('.chart svg g g.axis.x').style('display', 'none');
 
 });
