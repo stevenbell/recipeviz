@@ -76,12 +76,14 @@ d3.json("ingredients_matrix.json", function(error, data) {
       if(d.value == 0 || nameChart.filters().length == 0 || nameChart.filters().indexOf(d.key) == -1)
         return "";
       return d.key;
-    })
-    .renderlet(function(chart) {
+    });
+
+    //To See what filters are on the chart
+    /*.renderlet(function(chart) {
             dc.events.trigger(function() {
                 console.log(nameChart.filters())
             });
-        });
+        });*/
 
 
   //hide axes: https://github.com/dc-js/dc.js/issues/548
@@ -95,7 +97,7 @@ d3.json("ingredients_matrix.json", function(error, data) {
     visualization.append('div')
       .attr('id', keys[i] + 'Chart') //remove namespaces here
       .attr('class', 'chart')
-      .attr('style', 'width:200px; height:400px')
+      .attr('style', 'width:200px; height:400px; padding:10px;')
       .append('h4')
         .html(names[i])
         .append('div')
