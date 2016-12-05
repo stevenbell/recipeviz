@@ -34,7 +34,7 @@ for line in infile:
 #print ingredient_counter
 
 popular = sorted(ingredient_counter, key=ingredient_counter.get, reverse = True)
-all_ingredients = popular[:20]
+all_ingredients = popular[:4]
 all_ingredients.append('name')
 
 #print all_ingredients
@@ -62,7 +62,7 @@ for line in infile:
     # Add keys for all remaining, unused ingredients, with -1 for value -- change this?
     for i in all_ingredients:
       if i not in ingredient_remap:
-        ingredient_remap[i] = -1 
+        ingredient_remap[i] = 0 
 
     #ingredient_remap['name'] = row['name']
 

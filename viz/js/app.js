@@ -1,10 +1,3 @@
-var eggs = [1, 2, 3, 4]
-
-var flour = [1, 2, 3, 4]
-
-//Number of ingredient charts to display
-var num_ing = 4;
-
 //Total visualization area
 var V_HEIGHT = 600
 var V_WIDTH = 600
@@ -16,9 +9,13 @@ var margin = {
   right: 50
 };
 
-var eggChart = dc.scatterPlot("#eggChart");
-var flourChart = dc.scatterPlot("#flourChart");
-var nameChart = dc.bubbleChart("#nameChart");
+var visualization = d3.select('#viz');
+var dim_ing = {};
+var g_ing = {}
+var charts = {};
+//var eggChart = dc.scatterPlot("#eggChart");
+//var flourChart = dc.scatterPlot("#flourChart");
+//var sugarChart = dc.scatterPlot("#sugarChart");
 
 // Load Data
 d3.json("ingredients_matrix.json", function(error, data) {
@@ -27,49 +24,72 @@ d3.json("ingredients_matrix.json", function(error, data) {
     return;
   }
 
-  //extract top 4 (or however many) ingredient names, set up
-  //dimensions for each?
+  //console.log(data);
+
+  // Extract the ingredient names for however many there are
+  var names = Object.keys(data[0]);
+  names.splice(names.indexOf('name'), 1);
+
+  var keys = names.map(function(d){
+    return d.replace(' ', '');
+  });
+
+  console.log(keys);
 
   // Set up Crossfilter
   var cf = crossfilter(data);
   var all = cf.groupAll();
+
+  //create dimensions for all the ingredients
+  /*var chart_data = keys.map(function(d){
+    return {
+      name: d,
+      dim: cf.dimension(function(c) {
+        return [0, c[d];
+      })
+      group: this.dim.group();
+      chart: dc.scatterPlot('#' + d + 'Chart')
+    };
+  });*/
+
+  for (i = 0; i < keys.length; i++) {
+    dim_ing[keys[i]] = cf.dimension(function(d) {
+      return [0, d[names[i]]];
+    });
+    g_ing[keys[i]] = dim_ing[keys[i]].group();
+
+    visualization.append('div')
+      .attr('id', keys[i] + 'Chart') //remove namespaces here
+      .attr('class', 'chart')
+      .attr('style', 'width:200px; height:400px')
+      .append('div')
+        .attr('class', "reset")
+        .attr('style', 'visibility: hidden;')
+        .append('a')
+          .attr('href', "javascript:charts['" + keys[i] + "'].filterAll();dc.redrawAll();")
+          .html('reset');
+
+    charts[keys[i]] = dc.scatterPlot('#' + keys[i] + 'Chart'); //remove namespaces here
+
+    charts[keys[i]].x(d3.scale.linear())
+      .y(d3.scale.linear())
+      .yAxisPadding(1)
+      .xAxisPadding(1)
+      .elasticX(true)
+      .elasticY(true)
+      .dimension(dim_ing[keys[i]])
+      .group(g_ing[keys[i]])
+      .symbolSize(10)
+      .clipPadding(20)
+      .excludedColor("red")
+      .controlsUseVisibility(true);
+  }
+
+  var nameChart = dc.bubbleChart("#nameChart");
   var dim_name = cf.dimension(function(d){return d.name;});
-  //I know the top ingredients. This should be edited to be adaptable.
-  var dim_egg = cf.dimension(function(d){return [d.egg, 0];});
-  var dim_flour = cf.dimension(function(d){return [d['all-purpose flour'], 0];});
-  var dim_vanilla = cf.dimension(function(d){return d.vanilla;});
-  var dim_sugar = cf.dimension(function(d){return d['white sugar'];});
-
-
-  //Group
-  g_egg = dim_egg.group();
-  g_flour = dim_flour.group();
-  g_name = dim_name.group();
+  var g_name = dim_name.group();
 
   //hide axes: https://github.com/dc-js/dc.js/issues/548
-  eggChart.x(d3.scale.linear())
-    .yAxisPadding(3)
-    .xAxisPadding(1)
-    .elasticX(true)
-    .elasticY(true)
-    .dimension(dim_egg)
-    .group(g_egg)
-    .symbolSize(10)
-    .clipPadding(10)
-    .excludedColor("red")
-    .controlsUseVisibility(true);
-
-  flourChart.x(d3.scale.linear())
-    .yAxisPadding(3)
-    .xAxisPadding(100)
-    .elasticX(true)
-    .elasticY(true)
-    .dimension(dim_flour)
-    .group(g_flour)
-    .symbolSize(10)
-    .clipPadding(10)
-    .excludedColor("red")
-    .controlsUseVisibility(true);
 
   nameChart.x(d3.scale.linear())
     .dimension(dim_name)
