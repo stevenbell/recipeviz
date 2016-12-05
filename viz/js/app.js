@@ -10,12 +10,13 @@ var margin = {
 };
 
 var visualization = d3.select('#viz');
+// Data structures for the charts - consolidate to one object?
 var dim_ing = {};
 var g_ing = {}
 var charts = {};
-//var eggChart = dc.scatterPlot("#eggChart");
-//var flourChart = dc.scatterPlot("#flourChart");
-//var sugarChart = dc.scatterPlot("#sugarChart");
+
+//Name chart
+var nameChart = dc.bubbleChart("#nameChart");
 
 // Load Data
 d3.json("ingredients_matrix.json", function(error, data) {
@@ -34,24 +35,57 @@ d3.json("ingredients_matrix.json", function(error, data) {
     return d.replace(' ', '');
   });
 
-  console.log(keys);
-
   // Set up Crossfilter
   var cf = crossfilter(data);
   var all = cf.groupAll();
 
-  //create dimensions for all the ingredients
-  /*var chart_data = keys.map(function(d){
-    return {
-      name: d,
-      dim: cf.dimension(function(c) {
-        return [0, c[d];
-      })
-      group: this.dim.group();
-      chart: dc.scatterPlot('#' + d + 'Chart')
-    };
-  });*/
+  //Set up the chart of names
+  var dim_name = cf.dimension(function(d){return d.name;});
+  var g_name = dim_name.group().reduceCount();
 
+  console.log(g_name.top(5));
+
+  nameChart.x(d3.scale.ordinal().domain(dim_name))
+    .xUnits(dc.units.ordinal)
+    .dimension(dim_name)
+    .group(g_name)
+    .yAxisPadding(1)
+    .xAxisPadding(1)
+    .elasticY(true)
+    .elasticX(true)
+    .colorDomain([-500, 500])
+    .keyAccessor(function(d) {
+      return d.key;
+    })
+    .valueAccessor(function(d) {
+      if(nameChart.filters().length != 0 && nameChart.filters().indexOf(d.key) != -1)
+        return 2;
+      return d.value;
+    })
+    .radiusValueAccessor(function(d) {
+      if(d.value == 0 || nameChart.filters().length == 0 || nameChart.filters().indexOf(d.key) == -1)
+        return .5;
+      return 3;
+    })
+    .controlsUseVisibility(true)
+    .renderTitle(true)
+    .title(function(d) {
+      return d.key;
+    })
+    .label(function(d) {
+      if(d.value == 0 || nameChart.filters().length == 0 || nameChart.filters().indexOf(d.key) == -1)
+        return "";
+      return d.key;
+    })
+    .renderlet(function(chart) {
+            dc.events.trigger(function() {
+                console.log(nameChart.filters())
+            });
+        });
+
+
+  //hide axes: https://github.com/dc-js/dc.js/issues/548
+  // Create a chart for each of the ingredients
   for (i = 0; i < keys.length; i++) {
     dim_ing[keys[i]] = cf.dimension(function(d) {
       return [0, d[names[i]]];
@@ -62,12 +96,14 @@ d3.json("ingredients_matrix.json", function(error, data) {
       .attr('id', keys[i] + 'Chart') //remove namespaces here
       .attr('class', 'chart')
       .attr('style', 'width:200px; height:400px')
-      .append('div')
-        .attr('class', "reset")
-        .attr('style', 'visibility: hidden;')
-        .append('a')
-          .attr('href', "javascript:charts['" + keys[i] + "'].filterAll();dc.redrawAll();")
-          .html('reset');
+      .append('h4')
+        .html(names[i])
+        .append('div')
+          .attr('class', "reset")
+          .attr('style', 'visibility: hidden;')
+          .append('a')
+            .attr('href', "javascript:charts['" + keys[i] + "'].filterAll();dc.redrawAll();")
+            .html('reset');
 
     charts[keys[i]] = dc.scatterPlot('#' + keys[i] + 'Chart'); //remove namespaces here
 
@@ -81,19 +117,9 @@ d3.json("ingredients_matrix.json", function(error, data) {
       .group(g_ing[keys[i]])
       .symbolSize(10)
       .clipPadding(20)
-      .excludedColor("red")
+      .excludedOpacity(.5)
       .controlsUseVisibility(true);
   }
-
-  var nameChart = dc.bubbleChart("#nameChart");
-  var dim_name = cf.dimension(function(d){return d.name;});
-  var g_name = dim_name.group();
-
-  //hide axes: https://github.com/dc-js/dc.js/issues/548
-
-  nameChart.x(d3.scale.linear())
-    .dimension(dim_name)
-    .group(g_name); 
 
   dc.renderAll();
 
