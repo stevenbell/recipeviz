@@ -50,6 +50,7 @@ d3.json("ingredients_matrix.json", function(error, data) {
   //Set up the chart of names
   var dim_name = cf.dimension(function(d){return d.name;});
   var g_name = dim_name.group().reduceCount();
+  var colors = ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9','#bc80bd','#ccebc5','#ffed6f']
 
   nameChart.x(d3.scale.ordinal().domain(dim_name))
     .xUnits(dc.units.ordinal)
@@ -61,7 +62,11 @@ d3.json("ingredients_matrix.json", function(error, data) {
     .elasticY(true)
     .elasticX(true)
     .yAxisPadding(1)
-    .colorDomain([-500, 500])
+    // .colorDomain([-500, 500])
+    .ordinalColors(colors)
+    .colorAccessor(function(d) {
+      return colorGen(d.key[0].toLowerCase())
+    })
     .keyAccessor(function(d) {
       return d.key;
     })
@@ -145,6 +150,37 @@ d3.json("ingredients_matrix.json", function(error, data) {
       .excludedOpacity(.3)
       .controlsUseVisibility(true);
   }
+
+  function colorGen(letter) {
+    if ('an'.includes(letter)) {
+      return colors[0]
+    } else if ('bo'.includes(letter)) {
+      return colors[1]
+    } else if ('cp'.includes(letter)) {
+      return colors[2]
+    } else if ('dq'.includes(letter)) {
+      return colors[3]
+    } else if ('er'.includes(letter)) {
+      return colors[4]
+    } else if ('fs'.includes(letter)) {
+      return colors[5]
+    } else if ('gt'.includes(letter)) {
+      return colors[6]
+    } else if ('hu'.includes(letter)) {
+      return colors[7]
+    } else if ('iv'.includes(letter)) {
+      return colors[8]
+    } else if ('jw'.includes(letter)) {
+      return colors[9]
+    } else if ('kx'.includes(letter)) {
+      return colors[10]
+    } else if ('ly'.includes(letter)) {
+      return colors[11]
+    } else if ('mz'.includes(letter)) {
+      return colors[0]
+    }
+  }
+
 
   dc.renderAll();
   //hide axes
