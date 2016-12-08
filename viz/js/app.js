@@ -9,6 +9,13 @@ var margin = {
   right: 50
 };
 
+var instructions = document.querySelector('.panel')
+var closeInstructions = document.querySelector('#close')
+
+closeInstructions.addEventListener('click', () => {
+  instructions.style.display = "none"
+})
+
 var visualization = d3.select('#viz');
 // Data structures for the charts - consolidate to one object?
 var dim_ing = {};
