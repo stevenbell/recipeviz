@@ -30,6 +30,7 @@ d3.json("ingredients_matrix.json", function(error, data) {
   // Extract the ingredient names for however many there are
   var names = Object.keys(data[0]);
   names.splice(names.indexOf('name'), 1);
+  names.splice(names.indexOf('link'), 1);
 
   var keys = names.map(function(d){
     return d.replace(' ', '');
@@ -78,12 +79,26 @@ d3.json("ingredients_matrix.json", function(error, data) {
       return d.key;
     });
 
-    //To See what filters are on the chart
-    /*.renderlet(function(chart) {
-            dc.events.trigger(function() {
-                console.log(nameChart.filters())
-            });
-        });*/
+  //To show filters and links
+  nameChart.on('pretransition', function(chart) {
+    var links = d3.select('.linkArea').selectAll('.links')
+      .data(dim_name.bottom(chart.filters().length))
+      .attr('href', function(d){        //hack to update old link, puts links in alphabetical order so yay?
+        return "http://" + d.link;
+      })
+      .html(function(d) {
+        return d.name + ", ";
+      }); 
+    links.enter().append('a')
+      .attr('class', 'links')
+      .attr('href', function(d){
+        return "http://" + d.link;
+      })
+      .html(function(d) {
+        return d.name + ", ";
+      });
+    links.exit().remove();
+  });
 
   // Create a chart for each of the ingredients
   for (i = 0; i < keys.length; i++) {
@@ -94,8 +109,8 @@ d3.json("ingredients_matrix.json", function(error, data) {
 
     var div = visualization.append('div')
       .attr('id', keys[i] + 'Chart') //remove namespaces here
-      .attr('class', 'chart');
-      //.attr('style', 'width:150px; height:400px; padding:10px;');
+      .attr('class', 'chart')
+      .attr('style', 'padding:10px;');
     div.append('h4')
         .html(names[i]);
     div.append('div')

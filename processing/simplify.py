@@ -158,7 +158,7 @@ for line in infile:
       print "[%0.2f g] %s" % (amount*unit, ingredient)
       ingredients_simple.append({'amount':amount*unit, 'type':'mass', 'item':ingredient})
   
-  row_simple = {'name':row['name'], 'category':row['category'], 'ingredients':ingredients_simple}
+  row_simple = {'name':row['name'], 'number':row['number'],'category':row['category'], 'ingredients':ingredients_simple}
   json.dump(row_simple, outfile)
   outfile.write('\n')
 

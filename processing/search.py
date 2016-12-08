@@ -55,6 +55,7 @@ for line in infile:
 
     # Only add ingredients fron all_ingredients list into the matrix
     ingredient_remap = {'name':row['name']}
+    ingredient_remap['link'] = 'allrecipes.com/recipe/' + str(row['number']);
     for ing in row['ingredients']:
       if ing['item'] in all_ingredients:
         ingredient_remap[ing['item']] = ing['amount']
