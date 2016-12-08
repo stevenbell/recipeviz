@@ -94,6 +94,7 @@ d3.json("ingredients_matrix.json", function(error, data) {
       .attr('href', function(d){
         return "http://" + d.link;
       })
+      .attr('target', "_blank")
       .html(function(d) {
         return d.name + ", ";
       });
