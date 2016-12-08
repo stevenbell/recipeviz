@@ -177,7 +177,7 @@ d3.json("ingredients_matrix.json", function(error, data) {
     } else if ('ly'.includes(letter)) {
       return colors[11]
     } else if ('mz'.includes(letter)) {
-      return colors[0]
+      return colors[3]
     }
   }
 
