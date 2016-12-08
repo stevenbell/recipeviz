@@ -88,7 +88,7 @@ d3.json("ingredients_matrix.json", function(error, data) {
       })
       .html(function(d) {
         return d.name + ", ";
-      }); 
+      });
     links.enter().append('a')
       .attr('class', 'links')
       .attr('href', function(d){
@@ -118,7 +118,7 @@ d3.json("ingredients_matrix.json", function(error, data) {
           .attr('style', 'visibility: hidden;')
           .append('a')
             .attr('href', "javascript:charts['" + keys[i] + "'].filterAll();dc.redrawAll();")
-            .html('reset');
+            .html('<span class="label label-danger">reset</span>');
 
     charts[keys[i]] = dc.scatterPlot('#' + keys[i] + 'Chart'); //remove namespaces here
 
