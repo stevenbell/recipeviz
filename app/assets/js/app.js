@@ -25,6 +25,7 @@ var charts = {};
 //Name chart
 var nameChart = dc.bubbleChart("#nameChart");
 
+var searchLoader = document.querySelector('#searchLoader')
 var form = document.querySelector('.search-recipes')
 var search = form.querySelector('input[name="search"]')
 form.addEventListener('submit', event => {
