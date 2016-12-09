@@ -137,7 +137,7 @@ d3.json("ingredients_matrix.json", function(error, data) {
     var div = visualization.append('div')
       .attr('id', keys[i] + 'Chart') //remove namespaces here
       .attr('class', 'chart')
-      .attr('style', 'padding-left:10px;');
+      .attr('style', 'padding-left:10px; padding-right:30px; float: right;');
     div.append('div')
       .attr('class', 'title')
       .attr('style', 'display: inline-block; margin-top: 7px; vertical-align:top;')
@@ -154,7 +154,7 @@ d3.json("ingredients_matrix.json", function(error, data) {
 
     charts[keys[i]].x(d3.scale.linear())
       .y(d3.scale.linear())
-      .width(window.innerWidth - 300)
+      .width(window.innerWidth - 330)
       .height(60)
       .elasticX(true)
       .elasticY(true)
@@ -212,7 +212,7 @@ d3.json("ingredients_matrix.json", function(error, data) {
   window.onresize = function(event) {
     nameChart.width(window.innerWidth).transitionDuration(750);
     Object.values(charts).forEach(function(chart) {
-      chart.width(window.innerWidth - 300).transitionDuration(750);
+      chart.width(window.innerWidth - 330).transitionDuration(750);
     });
     dc.redrawAll();
   }
