@@ -16,31 +16,31 @@
     <h1>Recipe Visualizer <small>By Steven Bell (sebell), John Carlo Buenaflor (jcbuena), Caitlin Go (cgo2)</small></h1>
   </div>
 
-  <div class="row">
-    <div class="col-md-4">
-      <div class="panel panel-info">
-        <div class="panel-heading list-group-item">
-          Instructions
-          <span class="badge" id="close" style="text-align:right">x</span>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-info">
+          <div class="panel-heading list-group-item">
+            Instructions
+            <span class="badge" id="close" style="text-align:right">x</span>
+          </div>
+          <ol class="list-group">
+            <li class="list-group-item">1. Search for a recipe.</li>
+            <li class="list-group-item">2. Select a range of amounts in the ingredients chart.</li>
+            <li class="list-group-item">3. Click on some filtered recipe bubbles.</li>
+            <li class="list-group-item">4. Click on a recipe name to view the recipe details.</li>
+          </ol>
         </div>
-        <ol class="list-group">
-          <li class="list-group-item">1. Search for a recipe.</li>
-          <li class="list-group-item">2. Select a range of amounts in the ingredients chart.</li>
-          <li class="list-group-item">3. Click on some filtered recipe bubbles.</li>
-          <li class="list-group-item">4. Click on a recipe name to view the recipe details.</li>
-        </ol>
+        <form class="search-recipes">
+        <div class="input-group">
+          <input type="text" name="search" class="form-control" placeholder="Search for Recipes...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Search</button>
+          </span>
+        </div>
+      </form>
       </div>
-      <form class="search-recipes">
-      <div class="input-group">
-        <input type="text" name="search" class="form-control" placeholder="Search for Recipes...">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="submit">Search</button>
-        </span>
-      </div>
-    </form>
     </div>
-  </div>
-
+    
     <div id="viz">
       <div id="nameChart" style="padding: 10px;">
         <div class="row">
@@ -58,6 +58,7 @@
         </div>
       </div>
     </div>
+
 
 
   <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
