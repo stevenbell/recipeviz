@@ -1,13 +1,4 @@
-//Total visualization area
-var V_HEIGHT = 600
-var V_WIDTH = 600
-
-var margin = {
-  top: 20,
-  bottom: 20,
-  left: 50,
-  right: 50
-};
+//use this http://bl.ocks.org/stevemandl/02febfc129131db79adf
 
 var instructions = document.querySelector('.panel')
 var closeInstructions = document.querySelector('#close')
@@ -42,20 +33,26 @@ d3.json("ingredients_matrix.json", function(error, data) {
   //console.log(data);
 
   // Extract the ingredient names for however many there are
-  var names = Object.keys(data[0]);
-  names.splice(names.indexOf('name'), 1);
-  names.splice(names.indexOf('link'), 1);
+  var names = getNames();
+  //console.log(names);
+  var keys = getKeys();
 
-  console.log(names);
+  function getNames() {
+    var names = Object.keys(data[0]);
+    names.splice(names.indexOf('name'), 1);
+    names.splice(names.indexOf('link'), 1);
+    return names;
+  }
 
-  var keys = names.map(function(d){
-    key = d.replace(/ /g, '');
-    if(key.indexOf('(') != -1)
-    key = key.slice(0, key.indexOf('('));
-    return key;
-  });
-
-  console.log(keys)
+  function getKeys() {
+    var keys = names.map(function(d){
+      key = d.replace(/ /g, '');
+      if(key.indexOf('(') != -1)
+      key = key.slice(0, key.indexOf('('));
+      return key;
+    });
+    return keys;
+  }
 
   // Set up Crossfilter
   var cf = crossfilter(data);
@@ -127,15 +124,16 @@ d3.json("ingredients_matrix.json", function(error, data) {
     links.exit().remove();
   });
 
+function drawCharts() {
   // Create a chart for each of the ingredients
-  for (i = 0; i < keys.length; i++) {
-    dim_ing[keys[i]] = cf.dimension(function(d) {
+  keys.forEach(function(key, i) {
+    dim_ing[key] = cf.dimension(function(d) {
       return [d[names[i]], 0];
     });
-    g_ing[keys[i]] = dim_ing[keys[i]].group();
+    g_ing[key] = dim_ing[key].group();
 
     var div = visualization.append('div')
-      .attr('id', keys[i] + 'Chart') //remove namespaces here
+      .attr('id', key + 'Chart') //remove namespaces here
       .attr('class', 'chart')
       .attr('style', 'padding-left:10px; padding-right:30px; float: right;');
     div.append('div')
@@ -147,25 +145,26 @@ d3.json("ingredients_matrix.json", function(error, data) {
       .attr('class', "reset")
       .attr('style', 'margin-left: 10px; margin-top: 15px; display:inline-block; visibility: hidden; vertical-align:top;')
       .append('a')
-        .attr('href', "javascript:charts['" + keys[i] + "'].filterAll();dc.redrawAll();")
+        .attr('href', "javascript:charts['" + key + "'].filterAll();dc.redrawAll();")
         .html('<span class="label label-danger">reset</span>');
 
-    charts[keys[i]] = dc.scatterPlot('#' + keys[i] + 'Chart'); //remove namespaces here
+    charts[key] = dc.scatterPlot('#' + key + 'Chart'); //remove namespaces here
 
-    charts[keys[i]].x(d3.scale.linear())
+    charts[key].x(d3.scale.linear())
       .y(d3.scale.linear())
       .width(window.innerWidth - 330)
       .height(60)
       .elasticX(true)
       .elasticY(true)
       .yAxisPadding(.5)
-      .dimension(dim_ing[keys[i]])
-      .group(g_ing[keys[i]])
+      .dimension(dim_ing[key])
+      .group(g_ing[key])
       .symbolSize(10)
       .clipPadding(40)
       .excludedOpacity(.3)
       .controlsUseVisibility(true);
-  }
+  });
+}
 
   function colorGen(letter) {
     if ('an'.includes(letter)) {
@@ -197,7 +196,7 @@ d3.json("ingredients_matrix.json", function(error, data) {
     }
   }
 
-
+  drawCharts();
   dc.renderAll();
   //Make things inline
   d3.selectAll('.chart svg').style('display', 'inline-block');
