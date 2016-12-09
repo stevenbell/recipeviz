@@ -79,5 +79,5 @@ def search_recipes(query, db):
     return all_recipes
 
 if __name__ == '__main__':
-    all_recipes = search_recipes(sys.argv[1])
+    all_recipes = search_recipes(sys.argv[1], './assets/data/ingredients_simplified.json')
     json.dump(all_recipes, open(sys.argv[2], 'w'))
