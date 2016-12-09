@@ -44,17 +44,20 @@ def search_recipes(query, db):
     #print ingredient_counter
 
     popular = sorted(ingredient_counter, key=ingredient_counter.get, reverse = True)
-    all_ingredients = popular[:4]
+    all_ingredients = popular[:8]
 
     #print all_ingredients
 
     infile = open(inpath)
 
+    ids = []
+
     for line in infile:
       row = json.loads(line)
       # TODO: better filtering - perhaps based on category, multiple keywords,
       # wildcard matching, etc.
-      if keyword in row['name'].lower():
+      if keyword in row['name'].lower() and row['name'] not in ids:
+        ids.append(row['name'])
 
         # Transform from {'item':'cheese', 'amount':30.2} to {'cheese':30.2}
         #ingredient_remap = {ing['item']:ing['amount'] for ing in row['ingredients']}
@@ -69,7 +72,6 @@ def search_recipes(query, db):
         # Add keys for all remaining, unused ingredients, with -1 for value -- change this?
         for i in all_ingredients:
           name = str(i) + ingredient_units[i]
-          print name
           if name not in ingredient_remap:
             ingredient_remap[name] = 0
 

@@ -22,6 +22,13 @@ var search = form.querySelector('input[name="search"]')
 form.addEventListener('submit', event => {
   event.preventDefault()
 
+  var names = [], keys = [], charts = {};
+
+  function removeCharts() {
+    //remove chart divs
+    d3.selectAll('.chart').remove();
+  }
+
   d3.json("/search/" + search.value, function(error, data) {
   if(error){
     console.warn(error);
@@ -29,11 +36,6 @@ form.addEventListener('submit', event => {
   }
 
   //console.log(data);
-
-  // Extract the ingredient names for however many there are
-  var names = getNames();
-  //console.log(names);
-  var keys = getKeys();
 
   function getNames() {
     var names = Object.keys(data[0]);
@@ -123,6 +125,11 @@ form.addEventListener('submit', event => {
   });
 
   function drawCharts() {
+    // Extract the ingredient names for however many there are
+    names = getNames();
+    //console.log(names);
+    keys = getKeys();
+
     // Create a chart for each of the ingredients
     keys.forEach(function(key, i) {
       dim_ing[key] = cf.dimension(function(d) {
@@ -164,11 +171,9 @@ form.addEventListener('submit', event => {
     });
   }
 
-  function removeCharts() {
+  function removeIngs() {
+    removeCharts();
     keys.forEach(function(key, i) {
-      //remove charts? Need to do this?
-      //remove chart divs
-      d3.selectAll('.chart').remove();
       //remove dimensions
       dim_ing[key].dispose();
     });
@@ -204,9 +209,9 @@ form.addEventListener('submit', event => {
     }
   }
 
+  removeCharts();
   drawCharts();
   dc.renderAll();
-  removeCharts();
   //Make things inline
   d3.selectAll('.chart svg').style('display', 'inline-block');
   //hide axes
@@ -229,5 +234,3 @@ form.addEventListener('submit', event => {
 });
 
 })
-
-// Load Data
