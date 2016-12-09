@@ -46,9 +46,16 @@ d3.json("ingredients_matrix.json", function(error, data) {
   names.splice(names.indexOf('name'), 1);
   names.splice(names.indexOf('link'), 1);
 
+  console.log(names);
+
   var keys = names.map(function(d){
-    return d.replace(' ', '');
+    key = d.replace(/ /g, '');
+    if(key.indexOf('(') != -1)
+    key = key.slice(0, key.indexOf('('));
+    return key;
   });
+
+  console.log(keys)
 
   // Set up Crossfilter
   var cf = crossfilter(data);
@@ -126,8 +133,6 @@ d3.json("ingredients_matrix.json", function(error, data) {
       return [d[names[i]], 0];
     });
     g_ing[keys[i]] = dim_ing[keys[i]].group();
-
-    console.log(g_ing[keys[i]].top(1));
 
     var div = visualization.append('div')
       .attr('id', keys[i] + 'Chart') //remove namespaces here
