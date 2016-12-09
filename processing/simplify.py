@@ -2,6 +2,7 @@
 # Steven Bell <sebell@stanford.edu>
 # 19 November 2016
 
+import os # Searching directories
 from csv import DictReader
 import re # Regular expressions
 import json
@@ -9,15 +10,15 @@ import codecs # For writing unicode in log files
 #from IPython import embed
 from ingredientmap import ingredient_remap,adjectives
 
-inpath = 'cookie_ingredients.json'
-outpath = 'ingredients_simplified.json'
-errpath = 'ingredients_missing.txt'
+data_dir = 'scraped' # Path to a directory of recipe JSON files
+outpath = 'ingredients_simplified.json' # Single output file for recipes
+errpath = 'ingredients_missing.txt' # Log file for missing ingredients
 
 def parse_amount(ing):
   # Assume that the amount is at the beginning of the line
 
   # Whole number plus a fraction, e.g., 1 1/2 cups flour
-  s = re.match('\d+ \d+/\d+', ing)
+  s = re.match('\d+ \d+/\d+ ', ing) # require a space between amount and the rest
   if s is not None:
     (whole, fraction, rem) = ing.strip().split(' ', 2)
     coeff = fraction.split('/')
@@ -25,7 +26,7 @@ def parse_amount(ing):
     return (amount, rem)
 
   # Regular fraction, e.g., 3/4 cup sugar
-  s = re.match('\d+/\d+', ing)
+  s = re.match('\d+/\d+ ', ing)
   if s is not None:
     fraction = ing[0:s.end()]
     coeff = fraction.split('/')
@@ -101,7 +102,7 @@ def parse_ingredient(ing):
   ing = ' '.join([w for w in words if w not in adjectives])
 
   # TODO: deal with plurals properly (maybe using NLTK?)
-  if ing.endswith('es'):
+  if ing.endswith('ses'):
     ing = ing[:-2]
   elif ing.endswith('s'):
     ing = ing[:-1]
@@ -125,53 +126,57 @@ def parse_ingredient(ing):
   #print ing
   return None
 
-infile = open(inpath)
 outfile = open(outpath, 'w')
 errfile = codecs.open(errpath, encoding='utf-8', mode='w')
 
-for line in infile:
-  row = json.loads(line)
-
-  print row['name'].encode('ascii', 'ignore')
-  ingredients_simple = []
-  for ing in row['ingredients']:
+for inpath in os.listdir(data_dir):
+  infile = open(data_dir + os.sep + inpath)
+  for line in infile:
+    row = json.loads(line)
   
-    (amount, remainder) = parse_amount(ing)
-    if amount is None:
-      print ing
+    # Ignore the Johnsonville Sausage nonsense
+    if row['name'] == u"Johnsonville\xae Three Cheese Italian Style Chicken Sausage Skillet Pizza":
       continue
+
+    print row['name'].encode('ascii', 'ignore')
+    ingredients_simple = []
+    for ing in row['ingredients']:
     
-    (unit, utype, remainder) = parse_unit(remainder)
-
-    ingredient = parse_ingredient(remainder)
-    if ingredient is None:
-      errfile.write("Can't identify %s\n" % remainder)
-      continue
-
-    if unit is None:
-      print "[%0.1f] %s" % (amount, ingredient)
-      ingredients_simple.append({'amount':amount, 'type':'counted', 'item':ingredient})
-    elif utype is 'volume':
-      print "[%0.2f ml] %s" % (amount*unit, ingredient)
-      ingredients_simple.append({'amount':amount*unit, 'type':'volume', 'item':ingredient})
-    else:
-      print "[%0.2f g] %s" % (amount*unit, ingredient)
-      ingredients_simple.append({'amount':amount*unit, 'type':'mass', 'item':ingredient})
+      (amount, remainder) = parse_amount(ing)
+      if amount is None:
+        print ing
+        continue
+      
+      (unit, utype, remainder) = parse_unit(remainder)
   
-  row_simple = {'name':row['name'], 'number':row['number'],'category':row['category'], 'ingredients':ingredients_simple}
-  json.dump(row_simple, outfile)
-  outfile.write('\n')
-
-  print "--------"
-    # TODO: logic to convert ingredients to mass (grams)
-    # It would be nice to keep the info about volume, because the user will think
-    # about liquids in volumes.
+      ingredient = parse_ingredient(remainder)
+      if ingredient is None:
+        errfile.write("Can't identify %s\n" % remainder)
+        continue
   
-    # If we can't read it, just give up, print the offending line, and move on
+      if unit is None:
+        print "[%0.1f] %s" % (amount, ingredient)
+        ingredients_simple.append({'amount':amount, 'type':'counted', 'item':ingredient})
+      elif utype is 'volume':
+        print "[%0.2f ml] %s" % (amount*unit, ingredient)
+        ingredients_simple.append({'amount':amount*unit, 'type':'volume', 'item':ingredient})
+      else:
+        print "[%0.2f g] %s" % (amount*unit, ingredient)
+        ingredients_simple.append({'amount':amount*unit, 'type':'mass', 'item':ingredient})
+    
+    # Normalize to unit mass
+    # TODO: need to convert volume/counted units to mass before doing this
+    total_mass = sum([i['amount'] for i in ingredients_simple])
+    for i in ingredients_simple:
+      i['amount'] /= total_mass
+    
+    row_simple = {'name':row['name'], 'number':row['number'], 'category':row['category'], 'ingredients':ingredients_simple}
   
-    # Assume ingredients are already lowercase; if not: ing = ing.lower();
+    json.dump(row_simple, outfile)
+    outfile.write('\n')
   
-
+    print "--------"
+ 
 outfile.close()
 errfile.close()
 
