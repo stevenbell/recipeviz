@@ -22,6 +22,8 @@ var search = form.querySelector('input[name="search"]')
 form.addEventListener('submit', event => {
   event.preventDefault()
 
+  searchLoader.style.display = "block"
+
   var names = [], keys = [], charts = {};
 
   function removeCharts() {
@@ -34,6 +36,7 @@ form.addEventListener('submit', event => {
     console.warn(error);
     return;
   }
+  searchLoader.style.display = "none"
 
   //console.log(data);
 
@@ -140,7 +143,7 @@ form.addEventListener('submit', event => {
       var div = visualization.append('div')
         .attr('id', key + 'Chart')
         .attr('class', 'chart')
-        .attr('style', 'padding-left:10px; padding-right:30px; float: right;');
+        .attr('style', 'padding-left:10px; padding-right:' + window.innerWidth/15 + 'px; float: right;');
       div.append('div')
         .attr('class', 'title')
         .attr('style', 'display: inline-block; margin-top: 7px; vertical-align:top;')
@@ -157,7 +160,7 @@ form.addEventListener('submit', event => {
 
       charts[key].x(d3.scale.linear())
         .y(d3.scale.linear())
-        .width(window.innerWidth - 330)
+        .width(window.innerWidth - 300 - window.innerWidth/15)
         .height(60)
         .elasticX(true)
         .elasticY(true)
@@ -209,7 +212,7 @@ form.addEventListener('submit', event => {
     }
   }
 
-  removeCharts();
+  removeIngs();
   drawCharts();
   dc.renderAll();
   //Make things inline
@@ -226,8 +229,9 @@ form.addEventListener('submit', event => {
   window.onresize = function(event) {
     nameChart.width(window.innerWidth).transitionDuration(750);
     Object.values(charts).forEach(function(chart) {
-      chart.width(window.innerWidth - 330).transitionDuration(750);
+      chart.width(window.innerWidth  - 300 - window.innerWidth/15).transitionDuration(750);
     });
+    d3.selectAll('.chart').style('padding-right', '"' + window.innerWidth/15 + '"');
     dc.redrawAll();
   }
 
