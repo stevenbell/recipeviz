@@ -72,7 +72,7 @@ d3.json("ingredients_matrix.json", function(error, data) {
     // .colorDomain([-500, 500])
     .ordinalColors(colors)
     .colorAccessor(function(d) {
-      return colorGen(d.key[0].toLowerCase())
+      return colorGen(d.key[0].toLowerCase());
     })
     .keyAccessor(function(d) {
       return d.key;
@@ -126,6 +126,8 @@ d3.json("ingredients_matrix.json", function(error, data) {
       return [d[names[i]], 0];
     });
     g_ing[keys[i]] = dim_ing[keys[i]].group();
+
+    console.log(g_ing[keys[i]].top(1));
 
     var div = visualization.append('div')
       .attr('id', keys[i] + 'Chart') //remove namespaces here
