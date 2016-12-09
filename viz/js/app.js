@@ -20,11 +20,8 @@ var form = document.querySelector('.search-recipes')
 var search = form.querySelector('input[name="search"]')
 form.addEventListener('submit', event => {
   event.preventDefault()
-  console.log(search.value)
-})
 
-// Load Data
-d3.json("ingredients_matrix.json", function(error, data) {
+  d3.json("/search/" + search.value, function(error, data) {
   if(error){
     console.warn(error);
     return;
@@ -229,3 +226,7 @@ d3.json("ingredients_matrix.json", function(error, data) {
   }
 
 });
+
+})
+
+// Load Data
