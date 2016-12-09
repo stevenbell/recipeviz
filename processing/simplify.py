@@ -118,6 +118,7 @@ def parse_ingredient(ing):
 
   # Not an exact match, try searching for a partial match
   else:
+    print ing.encode('ascii', 'ignore')
     for k in known_ingredients:
       if k in ing:
         pass
@@ -138,13 +139,13 @@ for inpath in os.listdir(data_dir):
     if row['name'] == u"Johnsonville\xae Three Cheese Italian Style Chicken Sausage Skillet Pizza":
       continue
 
-    print row['name'].encode('ascii', 'ignore')
+    #print row['name'].encode('ascii', 'ignore')
     ingredients_simple = []
     for ing in row['ingredients']:
     
       (amount, remainder) = parse_amount(ing)
       if amount is None:
-        print ing
+        #print ing
         continue
       
       (unit, utype, remainder) = parse_unit(remainder)
@@ -155,13 +156,13 @@ for inpath in os.listdir(data_dir):
         continue
   
       if unit is None:
-        print "[%0.1f] %s" % (amount, ingredient)
+        #print "[%0.1f] %s" % (amount, ingredient)
         ingredients_simple.append({'amount':amount, 'type':'counted', 'item':ingredient})
       elif utype is 'volume':
-        print "[%0.2f ml] %s" % (amount*unit, ingredient)
+        #print "[%0.2f ml] %s" % (amount*unit, ingredient)
         ingredients_simple.append({'amount':amount*unit, 'type':'volume', 'item':ingredient})
       else:
-        print "[%0.2f g] %s" % (amount*unit, ingredient)
+        #print "[%0.2f g] %s" % (amount*unit, ingredient)
         ingredients_simple.append({'amount':amount*unit, 'type':'mass', 'item':ingredient})
     
     # Normalize to unit mass
@@ -175,7 +176,7 @@ for inpath in os.listdir(data_dir):
     json.dump(row_simple, outfile)
     outfile.write('\n')
   
-    print "--------"
+    #print "--------"
  
 outfile.close()
 errfile.close()
