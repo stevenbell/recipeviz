@@ -63,7 +63,7 @@ adjectives = [
 'creamy',
 'dark',
 'diced',
-'dried',
+'dried', # debateable, this sometimes matters
 'dry',
 'flaked',
 'finely',
@@ -83,6 +83,7 @@ adjectives = [
 'mashed',
 'melted',
 'minced',
+'mini',
 'miniature',
 'natural',
 'packed',
