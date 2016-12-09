@@ -123,37 +123,39 @@ d3.json("ingredients_matrix.json", function(error, data) {
   // Create a chart for each of the ingredients
   for (i = 0; i < keys.length; i++) {
     dim_ing[keys[i]] = cf.dimension(function(d) {
-      return [0, d[names[i]]];
+      return [d[names[i]], 0];
     });
     g_ing[keys[i]] = dim_ing[keys[i]].group();
 
     var div = visualization.append('div')
       .attr('id', keys[i] + 'Chart') //remove namespaces here
       .attr('class', 'chart')
-      .attr('style', 'padding:10px;');
-    div.append('h4')
+      .attr('style', 'padding-left:10px;');
+    div.append('div')
+      .attr('class', 'title')
+      .attr('style', 'display: inline-block; margin-top: 7px; vertical-align:top;')
+      .append('h4')
         .html(names[i]);
     div.append('div')
-          .attr('class', "reset")
-          .attr('style', 'visibility: hidden;')
-          .append('a')
-            .attr('href', "javascript:charts['" + keys[i] + "'].filterAll();dc.redrawAll();")
-            .html('<span class="label label-danger">reset</span>');
+      .attr('class', "reset")
+      .attr('style', 'margin-left: 10px; margin-top: 15px; display:inline-block; visibility: hidden; vertical-align:top;')
+      .append('a')
+        .attr('href', "javascript:charts['" + keys[i] + "'].filterAll();dc.redrawAll();")
+        .html('<span class="label label-danger">reset</span>');
 
     charts[keys[i]] = dc.scatterPlot('#' + keys[i] + 'Chart'); //remove namespaces here
 
     charts[keys[i]].x(d3.scale.linear())
       .y(d3.scale.linear())
-      .width(200)
-      .height(400)
-      .yAxisPadding(1)
-      .xAxisPadding(1)
+      .width(window.innerWidth - 300)
+      .height(60)
       .elasticX(true)
       .elasticY(true)
+      .yAxisPadding(.5)
       .dimension(dim_ing[keys[i]])
       .group(g_ing[keys[i]])
       .symbolSize(10)
-      .clipPadding(20)
+      .clipPadding(40)
       .excludedOpacity(.3)
       .controlsUseVisibility(true);
   }
@@ -190,9 +192,11 @@ d3.json("ingredients_matrix.json", function(error, data) {
 
 
   dc.renderAll();
+  //Make things inline
+  d3.selectAll('.chart svg').style('display', 'inline-block');
   //hide axes
-  d3.selectAll('.chart svg g g.axis.x').style('display', 'none');
-  d3.selectAll('#nameChart svg g g.axis.y').style('display', 'none');
+  d3.selectAll('.chart svg g g.axis.y').style('display', 'none');
+  d3.selectAll('#nameChart svg g g.axis.x').style('display', 'none');
   //make it so bubbles don't clip
   d3.selectAll('#nameChart svg g g.chart-body').attr('clip-path', null);
   //adjust symbol opacity
@@ -200,6 +204,9 @@ d3.json("ingredients_matrix.json", function(error, data) {
 
   window.onresize = function(event) {
     nameChart.width(window.innerWidth).transitionDuration(750);
+    Object.values(charts).forEach(function(chart) {
+      chart.width(window.innerWidth - 300).transitionDuration(750);
+    });
     dc.redrawAll();
   }
 
