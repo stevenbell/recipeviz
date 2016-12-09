@@ -10,7 +10,7 @@ closeInstructions.addEventListener('click', () => {
 var visualization = d3.select('#viz');
 // Data structures for the charts - consolidate to one object?
 var dim_ing = {};
-var g_ing = {}
+var g_ing = {};
 var charts = {};
 
 //Name chart
@@ -24,7 +24,7 @@ form.addEventListener('submit', event => {
 
   searchLoader.style.display = "block"
 
-  var names = [], keys = [], charts = {};
+  var names = [], keys = [];
 
   function removeCharts() {
     //remove chart divs
@@ -128,6 +128,8 @@ form.addEventListener('submit', event => {
   });
 
   function drawCharts() {
+    //remove old ingredients
+    removeIngs();
     // Extract the ingredient names for however many there are
     names = getNames();
     //console.log(names);
@@ -212,7 +214,6 @@ form.addEventListener('submit', event => {
     }
   }
 
-  removeIngs();
   drawCharts();
   dc.renderAll();
   //Make things inline
