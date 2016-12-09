@@ -25,6 +25,13 @@ var charts = {};
 //Name chart
 var nameChart = dc.bubbleChart("#nameChart");
 
+var form = document.querySelector('.search-recipes')
+var search = form.querySelector('input[name="search"]')
+form.addEventListener('submit', event => {
+  event.preventDefault()
+  console.log(search.value)
+})
+
 // Load Data
 d3.json("ingredients_matrix.json", function(error, data) {
   if(error){
