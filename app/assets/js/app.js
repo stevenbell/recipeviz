@@ -29,6 +29,10 @@ form.addEventListener('submit', event => {
   function removeCharts() {
     //remove chart divs
     d3.selectAll('.chart').remove();
+    //remove filters on nameChart
+    nameChart.filterAll();
+    //remove links
+    d3.select('.linkArea').selectAll('.links');
   }
 
   d3.json("/search/" + search.value, function(error, data) {
@@ -167,6 +171,7 @@ form.addEventListener('submit', event => {
         .elasticX(true)
         .elasticY(true)
         .yAxisPadding(.5)
+        //.xAxisPadding(1)
         .dimension(dim_ing[key])
         .group(g_ing[key])
         .symbolSize(10)
