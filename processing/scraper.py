@@ -16,15 +16,16 @@ import json
 # based on the category.
 
 # Don't overwrite, just append, which we can fix manually later
-outfile = open('ingredients.json', 'w+')
+outfile = open('ingredients.json', 'a')
 
-for number in range(11100, 20000):
+for number in range(96958, 113358):
   url = "http://allrecipes.com/recipe/%d" % number
 
   try:
     page = requests.get(url)
     if page.status_code == 404:
       print "404: %s" % url
+      time.sleep(0.5)
       continue
 
     document = html.fromstring(page.content)
